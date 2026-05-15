@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Queue Entries — MediQueue</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="queue-entries">
+  <header class="app-header">
+    <div class="header-top">
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true">MQ</div>
+        <div>
+          <p class="brand-name">MediQueue</p>
+          <p class="brand-sub">Queue Management</p>
+        </div>
+      </div>
+      <div class="header-user">
+        <span style="color:var(--muted-fg);">L. LALELA</span>
+        <span class="role-pill">Role: Administrator</span>
+      </div>
+    </div>
+    <nav class="tab-bar" aria-label="Primary">
+      <ul>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="queue-entries.html" class="active">Queue Entries</a></li>
+        <li><a href="add-entry.html">Add Queue Entry</a></li>
+        <li><a href="roles.html">Role Management</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="container">
+    <div class="page-head page-head-row">
+      <div>
+        <h1 id="page-queue-id"></h1>
+        <p id="page-meta"></p>
+      </div>
+      <span id="page-status-badge"></span>
+    </div>
+
+    <section class="card">
+      <!-- Filter tabs -->
+      <div class="filter-bar" role="tablist" aria-label="Filter entries by status">
+        <button class="filter-btn active" data-filter="all">All <span class="filter-count">0</span></button>
+        <button class="filter-btn" data-filter="waiting">Waiting <span class="filter-count">0</span></button>
+        <button class="filter-btn" data-filter="in_consult">In Consult <span class="filter-count">0</span></button>
+        <button class="filter-btn" data-filter="completed">Completed <span class="filter-count">0</span></button>
+      </div>
+
+      <!-- Search -->
+      <div class="search-row">
+        <div class="search-wrap">
+          <input id="entry-search" type="search" placeholder="Search patient ID..." />
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="table-wrap">
+        <table class="data">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Patient</th>
+              <th>Priority</th>
+              <th>Status</th>
+              <th>Check-in</th>
+              <th class="text-right">Action</th>
+            </tr>
+          </thead>
+          <tbody id="entries-body"></tbody>
+        </table>
+      </div>
+
+      <div class="card-footer">
+        <a class="btn" href="add-entry.html">Add Walk-in Patient</a>
+        <button class="btn btn-outline" id="call-next">Call Next Patient</button>
+      </div>
+    </section>
+  </main>
+  <footer class="app-footer">
+    <div class="container">MediQueue · Group IM2 · MediQueue Clinic Management System</div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

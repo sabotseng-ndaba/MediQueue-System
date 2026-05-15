@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard — MediQueue</title>
+  <meta name="description" content="Today's queue summary and recent queues for MediQueue." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="dashboard">
+  <header class="app-header">
+    <div class="header-top">
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true">MQ</div>
+        <div>
+          <p class="brand-name">MediQueue</p>
+          <p class="brand-sub">Queue Management</p>
+        </div>
+      </div>
+      <div class="header-user">
+        <span style="color:var(--muted-fg);">L. Lalela</span>
+        <span class="role-pill">Role: Administrator</span>
+      </div>
+    </div>
+    <nav class="tab-bar" aria-label="Primary">
+      <ul>
+        <li><a href="dashboard.html" class="active">Dashboard</a></li>
+        <li><a href="queue-entries.html">Queue Entries</a></li>
+        <li><a href="add-entry.html">Add Queue Entry</a></li>
+        <li><a href="roles.html">Role Management</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="container">
+    <div class="page-head">
+      <h1>Dashboard</h1>
+      <p>Overview of today's queue and recent activity.</p>
+    </div>
+
+    
+    <section class="card" aria-labelledby="today-h">
+      <header class="card-header">
+        <h2 id="today-h">Today's Queue</h2>
+        <span id="queue-status-badge"></span>
+      </header>
+      <div class="card-body">
+        <div class="stats">
+          <div>
+            <p class="stat-label">Queue ID</p>
+            <p class="stat-value-lg" id="queue-id"></p>
+          </div>
+          <div>
+            <p class="stat-label">Date</p>
+            <p class="stat-value-md" id="queue-date"></p>
+          </div>
+          <div>
+            <div class="capacity-row">
+              <span class="stat-label">Capacity</span>
+              <span class="cell-mono" style="font-weight:600;" id="cap-text"></span>
+            </div>
+            <div class="capacity-track" role="progressbar" aria-label="Queue capacity">
+              <div class="capacity-fill" id="cap-fill" style="width:0%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a class="btn" href="queue-entries.html">View Entries</a>
+        <a class="btn btn-outline" href="add-entry.html">Add Entry</a>
+        <button class="btn btn-outline" onclick="showToast('Queue closed (mock)')">Close Queue</button>
+      </div>
+    </section>
+
+   
+    <section style="margin-top:32px;" aria-labelledby="recent-h">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;">
+        <h2 id="recent-h" style="font-size:18px;font-weight:600;">Recent Queues</h2>
+        <span style="font-size:12px;color:var(--muted-fg);">Last 3 days</span>
+      </div>
+      <div class="recent-grid" id="recent-grid"></div>
+    </section>
+
+    
+    <a href="#" class="cta-dashed" onclick="event.preventDefault(); showToast('Create new queue (mock)')">
+      <span>
+        <span class="title">Create new queue for tomorrow</span><br />
+        <span class="sub">Set max capacity and open entries</span>
+      </span>
+      <span style="color:var(--muted-fg);">›</span>
+    </a>
+  </main>
+  <footer class="app-footer">
+    <div class="container">MediQueue · Group IM2 · MediQueue Clinic Management System</div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
