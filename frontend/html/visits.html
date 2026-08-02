@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MediQueue — Visits</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-logo">
+    <div>
+      <div class="sidebar-logo-name">MEDIQUEUE</div>
+      <div class="sidebar-logo-sub">Nurse dashboard</div>
+    </div>
+  </div>
+  <div class="sidebar-nav">
+    <a href="dashboard.html" class="nav-item"><i class="ti ti-home"></i> Dashboard</a>
+    <a href="visits.html" class="nav-item active"><i class="ti ti-clipboard-list"></i> Visits <span class="nav-badge">4</span></a>
+    <a href="vitals.html" class="nav-item"><i class="ti ti-heart-rate-monitor"></i> Vital Signs</a>
+  </div>
+  <div class="sidebar-footer">
+    <div class="avatar">BM</div>
+    <div>
+      <div style="font-size:13px;font-weight:bold;color:#1a6b5e;">Bongikazi M.</div>
+      <div style="font-size:11px;color:#888888;">Nurse · On duty</div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="topbar">
+    <span class="topbar-title">Visits</span>
+    <span style="font-size:12px;color:#888888;"><i class="ti ti-calendar"></i> Wed 7 May 2026</span>
+  </div>
+
+  <div class="content">
+    <div class="grid-4">
+      <div class="stat-card"><div class="stat-value">14</div><div class="stat-label">Total visits</div></div>
+      <div class="stat-card"><div class="stat-value" style="color:#e8a020;">4</div><div class="stat-label">Vitals pending</div></div>
+      <div class="stat-card"><div class="stat-value" style="color:#1a7a6e;">9</div><div class="stat-label">Completed</div></div>
+      <div class="stat-card"><div class="stat-value" style="color:#084298;">1</div><div class="stat-label">In progress</div></div>
+    </div>
+
+    <div class="grid-2">
+
+      <!-- CREATE VISIT -->
+      <div>
+        <div class="card">
+          <div class="card-title">Create new visit</div>
+
+          <label class="lbl">visit_id <span class="attr-tag">PK · auto</span></label>
+          <input type="text" value="V-0043 (auto-generated)" disabled/>
+
+          <label class="lbl">patient_id <span class="attr-tag">FK → patient</span></label>
+          <div style="display:flex;gap:6px;margin-bottom:8px;">
+            <input type="text" id="patient-search" placeholder="Search by name or ID number..." style="margin-bottom:0;flex:1;"/>
+            <button class="btn-primary btn-sm"><i class="ti ti-search"></i></button>
+          </div>
+          <div style="background:#f0f4f3;border-radius:6px;padding:10px 12px;margin-bottom:10px;display:flex;align-items:center;gap:10px;">
+            <div class="avatar avatar-md">TM</div>
+            <div>
+              <div style="font-size:13px;font-weight:bold;">Thabo Mokoena</div>
+              <div style="font-size:11px;color:#888888;">patient_id: P-001 · ID: 9203015800082</div>
+            </div>
+          </div>
+
+          <label class="lbl">appointment_id <span class="attr-tag">FK · nullable</span></label>
+          <select>
+            <option>None — walk-in</option>
+            <option>A-0019 · 07 May 09:00</option>
+            <option>A-0021 · 07 May 10:30</option>
+          </select>
+
+          <label class="lbl">visit_date</label>
+          <input type="date" value="2026-05-07"/>
+
+          <div class="grid-2" style="gap:8px;">
+            <div>
+              <label class="lbl">check_in_time</label>
+              <input type="time" value="09:15"/>
+            </div>
+            <div>
+              <label class="lbl">check_out_time</label>
+              <input type="time" placeholder="-- : --"/>
+            </div>
+          </div>
+
+          <label class="lbl">status</label>
+          <select style="margin-bottom:14px;">
+            <option>Pending</option>
+            <option>In-progress</option>
+            <option>Completed</option>
+            <option>Cancelled</option>
+          </select>
+
+          <div style="display:flex;gap:8px;">
+            <a href="vitals.html" class="btn-primary" style="flex:1;justify-content:center;text-decoration:none;">
+              <i class="ti ti-check"></i> Save visit
+            </a>
+            <button class="btn-outline">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- VISITS LIST + DETAIL -->
+      <div>
+        <div class="card">
+          <div class="card-title">Today's visits</div>
+          <div style="display:flex;gap:6px;margin-bottom:12px;">
+            <button class="btn-primary btn-sm">All</button>
+            <button class="btn-outline btn-sm">Pending</button>
+            <button class="btn-outline btn-sm">Active</button>
+            <button class="btn-outline btn-sm">Done</button>
+          </div>
+
+          <div class="list-row">
+            <div class="avatar" style="background-color:#155f56;">NZ</div>
+            <div style="flex:1;">
+              <div style="font-size:13px;font-weight:bold;">Nomsa Zulu</div>
+              <div style="font-size:11px;color:#888888;">V-0040 · in: 07:15 · out: 08:50</div>
+            </div>
+            <span class="badge badge-completed" style="margin-right:6px;">Completed</span>
+            <button class="btn-outline btn-sm" onclick="openUpdate('V-0040','Nomsa Zulu','Completed')">Update</button>
+          </div>
+
+          <div class="list-row">
+            <div class="avatar" style="background-color:#e8a020;">TM</div>
+            <div style="flex:1;">
+              <div style="font-size:13px;font-weight:bold;">Thabo Mokoena</div>
+              <div style="font-size:11px;color:#888888;">V-0043 · in: 09:15</div>
+            </div>
+            <span class="badge badge-pending" style="margin-right:6px;" id="tm-badge">Pending</span>
+            <button class="btn-outline btn-sm" onclick="openUpdate('V-0043','Thabo Mokoena','Pending')">Update</button>
+          </div>
+
+          <div class="list-row">
+            <div class="avatar">PM</div>
+            <div style="flex:1;">
+              <div style="font-size:13px;font-weight:bold;">Phumzile Mthembu</div>
+              <div style="font-size:11px;color:#888888;">V-0044 · in: 09:40</div>
+            </div>
+            <span class="badge badge-inprogress" style="margin-right:6px;">In-progress</span>
+            <button class="btn-outline btn-sm" onclick="openUpdate('V-0044','Phumzile Mthembu','In-progress')">Update</button>
+          </div>
+
+          <div class="list-row">
+            <div class="avatar" style="background-color:#888888;">KD</div>
+            <div style="flex:1;">
+              <div style="font-size:13px;font-weight:bold;">Kgomotso Dlamini</div>
+              <div style="font-size:11px;color:#888888;">V-0041 · in: 08:10</div>
+            </div>
+            <span class="badge badge-cancelled" style="margin-right:6px;">Cancelled</span>
+            <button class="btn-outline btn-sm" onclick="openUpdate('V-0041','Kgomotso Dlamini','Cancelled')">Update</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Visit detail — V-0043</div>
+          <div class="grid-2" style="gap:10px;margin-bottom:12px;">
+            <div><span class="lbl">visit_id</span><div style="font-size:13px;font-weight:bold;">V-0043</div></div>
+            <div><span class="lbl">patient_id</span><div style="font-size:13px;">P-001</div></div>
+            <div><span class="lbl">appointment_id</span><div style="font-size:13px;color:#888888;">None (walk-in)</div></div>
+            <div><span class="lbl">visit_date</span><div style="font-size:13px;">2026-05-07</div></div>
+            <div><span class="lbl">check_in_time</span><div style="font-size:13px;">09:15</div></div>
+            <div><span class="lbl">check_out_time</span><div style="font-size:13px;color:#888888;">Not yet</div></div>
+            <div><span class="lbl">status</span><span class="badge badge-pending" id="detail-badge">Pending</span></div>
+          </div>
+          <div style="display:flex;gap:8px;">
+            <a href="vitals.html" class="btn-primary btn-sm" style="text-decoration:none;">
+              <i class="ti ti-heart-rate-monitor"></i> Record vitals
+            </a>
+            <button class="btn-outline btn-sm" onclick="openUpdate('V-0043','Thabo Mokoena','Pending')">
+              <i class="ti ti-refresh"></i> Update status
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- UPDATE STATUS MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+      <div>
+        <div class="modal-title">Update visit status</div>
+        <div class="modal-sub" id="modal-sub">V-0043 · Thabo Mokoena</div>
+      </div>
+      <button class="btn-outline btn-sm" onclick="closeModal()"><i class="ti ti-x"></i></button>
+    </div>
+
+    <label class="lbl">Current status: <span id="current-label" class="badge badge-pending">Pending</span></label>
+    <label class="lbl" style="margin-top:10px;margin-bottom:8px;">Select new status:</label>
+
+    <div class="status-option disabled" id="so-pending" onclick="selectStatus('Pending')">
+      <div class="status-dot" style="background-color:#856404;"></div>
+      <div><div class="status-label">Pending</div><div class="status-desc">Patient checked in but vitals not yet recorded</div></div>
+    </div>
+    <div class="status-option" id="so-inprogress" onclick="selectStatus('In-progress')">
+      <div class="status-dot" style="background-color:#1a7a6e;"></div>
+      <div><div class="status-label">In-progress</div><div class="status-desc">Vitals recorded, patient currently in consultation</div></div>
+    </div>
+    <div class="status-option" id="so-completed" onclick="selectStatus('Completed')">
+      <div class="status-dot" style="background-color:#0f5132;"></div>
+      <div><div class="status-label">Completed</div><div class="status-desc">Consultation done, patient has checked out</div></div>
+    </div>
+    <div class="status-option" id="so-cancelled" onclick="selectStatus('Cancelled')">
+      <div class="status-dot" style="background-color:#888888;"></div>
+      <div><div class="status-label">Cancelled</div><div class="status-desc">Visit cancelled before consultation</div></div>
+    </div>
+
+    <div class="info-box">
+      <i class="ti ti-info-circle"></i>
+      Status can only move forward. Completed visits cannot revert to Pending.
+    </div>
+
+    <div style="display:flex;gap:8px;">
+      <button class="btn-primary" style="flex:1;" onclick="saveStatus()">
+        <i class="ti ti-device-floppy"></i> Save status
+      </button>
+      <button class="btn-outline" onclick="closeModal()">Cancel</button>
+    </div>
+    <div class="success-banner" id="save-msg">
+      <i class="ti ti-check"></i> Status updated successfully!
+    </div>
+  </div>
+</div>
+
+<script>
+  const statusOrder = ['Pending','In-progress','Completed','Cancelled'];
+  let currentStatus = '';
+  let selectedStatus = '';
+
+  function getBadgeClass(s) {
+    return { Pending:'badge-pending','In-progress':'badge-inprogress',Completed:'badge-completed',Cancelled:'badge-cancelled' }[s]||'badge-cancelled';
+  }
+
+  function openUpdate(visitId, patient, status) {
+    currentStatus = status; selectedStatus = '';
+    document.getElementById('modal-sub').textContent = visitId + ' · ' + patient;
+    const lbl = document.getElementById('current-label');
+    lbl.textContent = status; lbl.className = 'badge ' + getBadgeClass(status);
+    ['Pending','In-progress','Completed','Cancelled'].forEach(s => {
+      const el = document.getElementById('so-' + s.toLowerCase().replace('-',''));
+      el.className = 'status-option';
+      const idx = statusOrder.indexOf(s), curIdx = statusOrder.indexOf(status);
+      if (s === status || (idx < curIdx && s !== 'Cancelled')) el.classList.add('disabled');
+    });
+    document.getElementById('save-msg').style.display = 'none';
+    document.getElementById('modal').classList.add('show');
+  }
+
+  function selectStatus(s) {
+    const curIdx = statusOrder.indexOf(currentStatus), selIdx = statusOrder.indexOf(s);
+    if (s === currentStatus || (selIdx < curIdx && s !== 'Cancelled')) return;
+    selectedStatus = s;
+    ['Pending','In-progress','Completed','Cancelled'].forEach(opt => {
+      document.getElementById('so-' + opt.toLowerCase().replace('-','')).classList.remove('selected');
+    });
+    document.getElementById('so-' + s.toLowerCase().replace('-','')).classList.add('selected');
+  }
+
+  function saveStatus() {
+    if (!selectedStatus) return;
+    document.getElementById('save-msg').style.display = 'block';
+    const b1 = document.getElementById('tm-badge');
+    const b2 = document.getElementById('detail-badge');
+    if (b1) { b1.textContent = selectedStatus; b1.className = 'badge ' + getBadgeClass(selectedStatus); }
+    if (b2) { b2.textContent = selectedStatus; b2.className = 'badge ' + getBadgeClass(selectedStatus); }
+    setTimeout(() => closeModal(), 1600);
+  }
+
+  function closeModal() {
+    document.getElementById('modal').classList.remove('show');
+    document.getElementById('save-msg').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
