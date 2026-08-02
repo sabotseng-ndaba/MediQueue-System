@@ -1,0 +1,349 @@
+/* ============================================================
+   MediQueue — Admin Dashboard
+   style1.css — Shared styles for Admin Subsystem
+   Sabotseng Ndaba — Clinic & Department Subsystem
+   ============================================================ */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f4f7f7;
+    color:#333;
+    font-size:14px;
+}
+
+/* ===================== SIDEBAR ===================== */
+
+.sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    width:220px;
+    height:100vh;
+    background:#ffffff;
+    border-right:1px solid #ddd;
+    display:flex;
+    flex-direction:column;
+}
+
+.logo{
+    text-align:center;
+    padding:20px;
+    border-bottom:1px solid #ddd;
+}
+
+.logo img{
+    width:120px;
+}
+
+.menu{
+    margin-top:20px;
+    display:flex;
+    flex-direction:column;
+}
+
+.menu a{
+    text-decoration:none;
+    color:#555;
+    padding:13px 20px;
+    transition:.3s;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.menu a:hover{
+    background:#eef6f5;
+    color:#0b7265;
+}
+
+.menu a.active{
+    background:#0b7265;
+    color:white;
+    font-weight:bold;
+}
+
+/* ===================== TOPBAR ===================== */
+
+.topbar{
+    margin-left:220px;
+    height:70px;
+    background:white;
+    border-bottom:1px solid #ddd;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 30px;
+}
+
+.topbar h2{
+    color:#0b7265;
+}
+
+.user{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.avatar{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:#0b7265;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:bold;
+}
+
+/* ===================== MAIN CONTENT ===================== */
+
+.main{
+    margin-left:220px;
+    padding:30px;
+}
+
+/* ===================== CARDS ===================== */
+
+.card{
+    background:white;
+    border-radius:10px;
+    padding:20px;
+    box-shadow:0 2px 6px rgba(0,0,0,.08);
+    margin-bottom:20px;
+}
+
+.card-title{
+    color:#0b7265;
+    font-size:18px;
+    margin-bottom:20px;
+}
+
+/* ===================== DASHBOARD ===================== */
+
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.stat-card{
+    background:white;
+    border-radius:10px;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 2px 6px rgba(0,0,0,.08);
+}
+
+.stat-card h1{
+    color:#0b7265;
+    font-size:38px;
+}
+
+.stat-card p{
+    margin-top:10px;
+    color:#777;
+}
+
+/* ===================== FORMS ===================== */
+
+.form-group{
+    margin-bottom:18px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:6px;
+    font-weight:bold;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:14px;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:#0b7265;
+    outline:none;
+}
+
+/* ===================== BUTTONS ===================== */
+
+.btn{
+    padding:10px 22px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.btn-primary{
+    background:#0b7265;
+    color:white;
+}
+
+.btn-primary:hover{
+    background:#09584e;
+}
+
+.btn-secondary{
+    background:#f4f4f4;
+    border:1px solid #ccc;
+}
+
+.btn-secondary:hover{
+    background:#e7e7e7;
+}
+
+.button-group{
+    display:flex;
+    gap:10px;
+}
+
+/* ===================== TABLE ===================== */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+table th{
+    background:#0b7265;
+    color:white;
+    padding:12px;
+    text-align:left;
+}
+
+table td{
+    padding:12px;
+    border-bottom:1px solid #ddd;
+}
+
+table tr:hover{
+    background:#f8f8f8;
+}
+
+/* ===================== STATUS ===================== */
+
+.status-active{
+    color:green;
+    font-weight:bold;
+}
+
+.status-inactive{
+    color:red;
+    font-weight:bold;
+}
+
+/* ===================== SUCCESS PAGE ===================== */
+
+.success-box{
+    text-align:center;
+    padding:60px;
+}
+
+.success-icon{
+    font-size:80px;
+    color:#e6a319;
+    margin-bottom:20px;
+}
+
+.success-box h2{
+    color:#0b7265;
+    margin-bottom:10px;
+}
+
+/* ===================== LOGIN ===================== */
+
+.login-container{
+    display:flex;
+    height:100vh;
+}
+
+.login-left{
+    width:35%;
+    background:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:40px;
+}
+
+.login-right{
+    width:65%;
+    background:#0b7265;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    flex-direction:column;
+}
+
+.login-card{
+    width:320px;
+}
+
+.login-card img{
+    width:80px;
+    display:block;
+    margin:auto;
+    margin-bottom:20px;
+}
+
+.login-card h2{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.full-btn{
+    width:100%;
+}
+
+/* ===================== RESPONSIVE ===================== */
+
+@media(max-width:768px){
+
+.sidebar{
+    width:70px;
+}
+
+.menu a{
+    justify-content:center;
+    font-size:0;
+}
+
+.topbar{
+    margin-left:70px;
+}
+
+.main{
+    margin-left:70px;
+}
+
+.logo img{
+    width:45px;
+}
+
+.login-container{
+    flex-direction:column;
+}
+
+.login-left,
+.login-right{
+    width:100%;
+}
+}
