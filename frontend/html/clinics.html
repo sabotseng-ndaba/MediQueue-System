@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Clinics | MediQueue</title>
+
+    <link rel="stylesheet" href="../css/style1.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+
+<div class="sidebar">
+
+    <div class="logo">
+        <img src="../images/logo.png" alt="MediQueue Logo">
+    </div>
+
+    <div class="menu">
+
+        <a href="admindashboard.html">
+            <i class="fa-solid fa-table-columns"></i>
+            Dashboard
+        </a>
+
+        <a href="clinic.html" class="active">
+            <i class="fa-solid fa-hospital"></i>
+            Clinics
+        </a>
+
+        <a href="add-department.html">
+            <i class="fa-solid fa-building"></i>
+            Departments
+        </a>
+
+        <a href="login.html">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Logout
+        </a>
+
+    </div>
+
+</div>
+
+<!-- ================= TOPBAR ================= -->
+
+<div class="topbar">
+
+    <h2>View Clinics</h2>
+
+    <div class="user">
+
+        <div class="avatar">SA</div>
+
+        <div>
+            <strong>Sabo Admin</strong><br>
+            <small>System Administrator</small>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= MAIN ================= -->
+
+<div class="main">
+
+    <div class="card">
+
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+
+            <h3 class="card-title">
+                Registered Clinics
+            </h3>
+
+            <button class="btn btn-primary"
+                    onclick="location.href='add-clinic.html'">
+
+                <i class="fa-solid fa-plus"></i>
+                Add Clinic
+
+            </button>
+
+        </div>
+
+        <div class="form-group">
+
+            <input
+                type="text"
+                placeholder="Search clinic by name...">
+
+        </div>
+
+        <table>
+
+            <thead>
+
+            <tr>
+
+                <th>Clinic ID</th>
+                <th>Clinic Name</th>
+                <th>Location</th>
+                <th>Contact</th>
+                <th>Status</th>
+                <th>Actions</th>
+
+            </tr>
+
+            </thead>
+
+            <tbody>
+
+            <tr>
+
+                <td>CL001</td>
+                <td>District Six Clinic</td>
+                <td>Cape Town</td>
+                <td>021 555 1001</td>
+                <td class="status-active">Active</td>
+
+                <td>
+
+                    <button class="btn btn-secondary">
+                        <i class="fa-solid fa-pen"></i>
+                        Edit
+                    </button>
+
+                    <button class="btn btn-secondary">
+                        <i class="fa-solid fa-trash"></i>
+                        Delete
+                    </button>
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>CL002</td>
+                <td>Bellville Clinic</td>
+                <td>Bellville</td>
+                <td>021 555 1002</td>
+                <td class="status-active">Active</td>
+
+                <td>
+
+                    <button class="btn btn-secondary">
+                        <i class="fa-solid fa-pen"></i>
+                        Edit
+                    </button>
+
+                    <button class="btn btn-secondary">
+                        <i class="fa-solid fa-trash"></i>
+                        Delete
+                    </button>
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>CL003</td>
+                <td>Khayelitsha Clinic</td>
+                <td>Khayelitsha</td>
+                <td>021 555 1003</td>
+                <td class="status-inactive">Inactive</td>
+
+                <td>
+
+                    <button class="btn btn-secondary">
+                        <i class="fa-solid fa-pen"></i>
+                        Edit
+                    </button>
+
+                    <button class="btn btn-secondary">
+                        <i class="fa-solid fa-trash"></i>
+                        Delete
+                    </button>
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>CL004</td>
+                <td>Mitchells Plain Clinic</td>
+                <td>Mitchells Plain</td>
+                <td>021 555 1004</td>
+                <td class="status-active">Active</td>
+
+                <td>
+
+                    <button class="btn btn-secondary">
+                        <i class="fa-solid fa-pen"></i>
+                        Edit
+                    </button>
+
+                    <button class="btn btn-secondary">
+                        <i class="fa-solid fa-trash"></i>
+                        Delete
+                    </button>
+
+                </td>
+
+            </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<script src="../js/script1.js"></script>
+
+</body>
+</html>

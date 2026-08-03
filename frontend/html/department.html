@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Departments | MediQueue</title>
+
+    <link rel="stylesheet" href="../css/style1.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+
+<div class="sidebar">
+
+    <div class="logo">
+        <img src="../images/logo.png" alt="MediQueue Logo">
+    </div>
+
+    <div class="menu">
+
+        <a href="admindashboard.html">
+            <i class="fa-solid fa-table-columns"></i>
+            Dashboard
+        </a>
+
+        <a href="clinic.html">
+            <i class="fa-solid fa-hospital"></i>
+            Clinics
+        </a>
+
+        <a href="department.html" class="active">
+            <i class="fa-solid fa-building"></i>
+            Departments
+        </a>
+
+        <a href="login.html">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Logout
+        </a>
+
+    </div>
+
+</div>
+
+<!-- ================= TOPBAR ================= -->
+
+<div class="topbar">
+
+    <h2>View Departments</h2>
+
+    <div class="user">
+
+        <div class="avatar">
+            SA
+        </div>
+
+        <div>
+            <strong>Sabo Admin</strong><br>
+            <small>System Administrator</small>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= MAIN CONTENT ================= -->
+
+<div class="main">
+
+    <div class="card">
+
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+
+            <h3 class="card-title">
+                Registered Departments
+            </h3>
+
+            <button class="btn btn-primary"
+                    onclick="location.href='add-department.html'">
+
+                <i class="fa-solid fa-plus"></i>
+                Add Department
+
+            </button>
+
+        </div>
+
+        <div class="form-group">
+
+            <input
+                type="text"
+                placeholder="Search department by name...">
+
+        </div>
+
+        <table>
+
+            <thead>
+
+            <tr>
+                <th>Department ID</th>
+                <th>Department Name</th>
+                <th>Clinic</th>
+                <th>Head</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+
+            </thead>
+
+            <tbody>
+
+            <tr>
+                <td>DEP001</td>
+                <td>General Medicine</td>
+                <td>District Six Clinic</td>
+                <td>Dr. M. Jacobs</td>
+                <td class="status-active">Active</td>
+
+                <td>
+
+                    <button class="btn btn-secondary">
+                        <i class="fa-solid fa-pen"></i>
+                        Edit
+                    </button>
+
+                    <button class="btn btn-secondary">
+                        <i class="fa-solid fa-trash"></i>
+                        Delete
+                    </button>
+
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>DEP002</td>
+                <td>Paediatrics</td>
+                <td>Bellville Clinic</td>
+                <td>Dr. L. Daniels</td>
+                <td class="status-active">Active</td>
+
+                <td>
+
+                    <button class="btn btn-secondary">
+                        <i class="fa-solid fa-pen"></i>
+                        Edit
+                    </button>
+
+                    <button class="btn btn-secondary">
+                        <i class="fa-solid fa-trash"></i>
+                        Delete
+                    </button>
+
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>DEP003</td>
+                <td>Emergency Care</td>
+                <td>Khayelitsha Clinic</td>
+                <td>Dr. T. Mokoena</td>
+                <td class="status-active">Active</td>
+
+                <td>
+
+                    <button class="btn btn-secondary">
+                        <i class="fa-solid fa-pen"></i>
+                        Edit
+                    </button>
+
+                    <button class="btn btn-secondary">
+                        <i class="fa-solid fa-trash"></i>
+                        Delete
+                    </button>
+
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>DEP004</td>
+                <td>Pharmacy</td>
+                <td>Mitchells Plain Clinic</td>
+                <td>Mrs. A. Petersen</td>
+                <td class="status-inactive">Inactive</td>
+
+                <td>
+
+                    <button class="btn btn-secondary">
+                        <i class="fa-solid fa-pen"></i>
+                        Edit
+                    </button>
+
+                    <button class="btn btn-secondary">
+                        <i class="fa-solid fa-trash"></i>
+                        Delete
+                    </button>
+
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>DEP005</td>
+                <td>Radiology</td>
+                <td>District Six Clinic</td>
+                <td>Dr. S. Naidoo</td>
+                <td class="status-active">Active</td>
+
+                <td>
+
+                    <button class="btn btn-secondary">
+                        <i class="fa-solid fa-pen"></i>
+                        Edit
+                    </button>
+
+                    <button class="btn btn-secondary">
+                        <i class="fa-solid fa-trash"></i>
+                        Delete
+                    </button>
+
+                </td>
+
+            </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<script src="../js/script1.js"></script>
+
+</body>
+</html>
