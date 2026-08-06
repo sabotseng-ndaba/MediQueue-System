@@ -56,8 +56,12 @@ public class AppointmentService implements IAppointmentService {
     }
 
     @Override
-    public void delete(String appointmentId) {
+    public boolean delete(String appointmentId) {
+        if (!appointmentRepository.existsById(appointmentId)) {
+            return false;
+        }
         appointmentRepository.deleteById(appointmentId);
+        return true;
     }
 
     @Override

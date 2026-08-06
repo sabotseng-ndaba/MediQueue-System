@@ -55,8 +55,12 @@ public class MedicalRecordService implements IMedicalRecordService {
     }
 
     @Override
-    public void delete(String recordId) {
+    public boolean delete(String recordId) {
+        if (!medicalRecordRepository.existsById(recordId)) {
+            return false;
+        }
         medicalRecordRepository.deleteById(recordId);
+        return true;
     }
 
     @Override
