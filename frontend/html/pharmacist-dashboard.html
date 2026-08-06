@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MediQueue — Pharmacist Dashboard</title>
+<link rel="icon" href="assets/images/logo-icon.png" type="image/png" />
+<link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <div class="sidebar">
+      <div class="sidebar-brand">
+        <img src="../assets/images/logo-icon.png" alt="MediQueue" />
+        <div class="sidebar-brand-name font-display">MediQueue</div>
+      </div>
+      <div class="nav">
+        <a class="nav-item active" href="pharmacist-dashboard.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>Dashboard</a>
+<a class="nav-item " href="pharmacist-prescriptions.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/><path d="m8.5 8.5 7 7"/></svg>Prescriptions</a>
+<a class="nav-item " href="pharmacist-patients.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Patients</a>
+      </div>
+      <a class="nav-logout" href="index.html" id="logoutLink"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg> Logout</a>
+    </div>
+    <div class="main">
+      <div class="topbar">
+        <span class="role-badge">Pharmacist dashboard</span>
+        <div class="topbar-right">
+          <div class="bell-wrap"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><div class="bell-dot"></div></div>
+          <div class="user-block">
+            <div class="avatar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/><path d="m8.5 8.5 7 7"/></svg></div>
+            <div><div class="user-name">P. Adams</div><div class="user-role">Pharmacist</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <div class="page-header">
+          <div><h1 class="page-title font-display">Pharmacist dashboard</h1><div class="page-sub">P. Adams — Dispensary</div></div>
+        </div>
+        <div class="cards-row">
+          <div class="card"><div class="card-label">Prescriptions today</div><div class="card-value font-display" id="rxToday">–</div></div>
+          <div class="card"><div class="card-label">Dispensed today</div><div class="card-value font-display" id="rxDispensed">–</div><div class="card-sub" id="rxDispensedSub"></div></div>
+          <div class="card"><div class="card-label">Pending</div><div class="card-value font-display" id="rxPending" style="color:var(--gold)">–</div><div class="card-sub">To be dispensed</div></div>
+        </div>
+        <div class="grid-2b">
+          <div class="panel">
+            <div class="panel-head"><div class="panel-title">Pending prescriptions</div></div>
+            <div class="table-scroll"><table>
+              <thead><tr><th>Patient</th><th>Medication</th><th>Dosage</th><th>Prescribed by</th><th>Status</th></tr></thead>
+              <tbody id="rxTableBody"></tbody>
+            </table></div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><div class="panel-title">Prescription details</div></div>
+            <div id="rxDetail"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="../js/data.js"></script>
+  <script src="../js/guard.js"></script>
+  <script src="../js/render-helpers.js"></script>
+  <script src="../js/modal.js"></script>
+  <script src="../js/pages/pharmacist-dashboard.js"></script>
+</body>
+</html>
