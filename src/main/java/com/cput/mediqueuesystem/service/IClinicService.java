@@ -12,15 +12,7 @@ import com.cput.mediqueuesystem.domain.Clinic;
  * Date: 03 August 2026
  */
 
-public interface IClinicService {
-
-    Clinic create(Clinic clinic);
-
-    Clinic read(String clinicId);
-
-    Clinic update(Clinic clinic);
-
-    void delete(String clinicId);
+public interface IClinicService extends IService<Clinic, String> {
 
     List<Clinic> getAll();
 }

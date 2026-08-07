@@ -12,15 +12,7 @@ import com.cput.mediqueuesystem.domain.MedicalRecord;
  * Date: 03 August 2026
  */
 
-public interface IMedicalRecordService {
-
-    MedicalRecord create(MedicalRecord medicalRecord);
-
-    MedicalRecord read(String recordId);
-
-    MedicalRecord update(MedicalRecord medicalRecord);
-
-    void delete(String recordId);
+public interface IMedicalRecordService extends IService<MedicalRecord, String> {
 
     List<MedicalRecord> getAll();
 }

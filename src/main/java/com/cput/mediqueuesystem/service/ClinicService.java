@@ -55,8 +55,12 @@ public class ClinicService implements IClinicService {
     }
 
     @Override
-    public void delete(String clinicId) {
+    public boolean delete(String clinicId) {
+        if (!clinicRepository.existsById(clinicId)) {
+            return false;
+        }
         clinicRepository.deleteById(clinicId);
+        return true;
     }
 
     @Override

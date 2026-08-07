@@ -12,15 +12,7 @@ import com.cput.mediqueuesystem.domain.Appointment;
  * Date: 03 August 2026
  */
 
-public interface IAppointmentService {
-
-    Appointment create(Appointment appointment);
-
-    Appointment read(String appointmentId);
-
-    Appointment update(Appointment appointment);
-
-    void delete(String appointmentId);
+public interface IAppointmentService extends IService<Appointment, String> {
 
     List<Appointment> getAll();
 }

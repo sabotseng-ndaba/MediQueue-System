@@ -12,15 +12,7 @@ import com.cput.mediqueuesystem.domain.Prescription;
  * Date: 03 August 2026
  */
 
-public interface IPrescriptionService {
-
-    Prescription create(Prescription prescription);
-
-    Prescription read(String prescriptionId);
-
-    Prescription update(Prescription prescription);
-
-    void delete(String prescriptionId);
+public interface IPrescriptionService extends IService<Prescription, String> {
 
     List<Prescription> getAll();
 }

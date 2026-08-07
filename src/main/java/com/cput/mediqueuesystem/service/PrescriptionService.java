@@ -56,8 +56,12 @@ public class PrescriptionService implements IPrescriptionService {
     }
 
     @Override
-    public void delete(String prescriptionId) {
+    public boolean delete(String prescriptionId) {
+        if (!prescriptionRepository.existsById(prescriptionId)) {
+            return false;
+        }
         prescriptionRepository.deleteById(prescriptionId);
+        return true;
     }
 
     @Override
