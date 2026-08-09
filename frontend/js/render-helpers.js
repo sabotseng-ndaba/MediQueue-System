@@ -9,3 +9,16 @@ function badgeClass(s) {
   return "badge-grey";
 }
 function badge(s) { return `<span class="badge ${badgeClass(s)}">${s}</span>`; }
+
+function setupSearchFilter() {
+  const input = document.querySelector(".search-input");
+  if (!input) return;
+  input.addEventListener("input", () => {
+    const term = input.value.trim().toLowerCase();
+    document.querySelectorAll("tbody tr").forEach((row) => {
+      row.style.display = row.textContent.toLowerCase().includes(term) ? "" : "none";
+    });
+  });
+}
+
+document.addEventListener("DOMContentLoaded", setupSearchFilter);

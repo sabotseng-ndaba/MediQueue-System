@@ -57,7 +57,27 @@ const DEFAULT_DATA = {
     { name: "Dr. L. Pillay", role: "Doctor", email: "l.pillay@mediqueue.co.za", status: "Active" },
     { name: "P. Adams", role: "Pharmacist", email: "p.adams@mediqueue.co.za", status: "Active" },
   ],
+  
+  
   seenToday: 14,
+seenToday: 14,
+  clinics: [
+    { name: "MediQueue Central Clinic", location: "Cape Town CBD" },
+    { name: "MediQueue Khayelitsha", location: "Khayelitsha" },
+    { name: "MediQueue Mitchells Plain", location: "Mitchells Plain" },
+  ],
+
+  announcements: [
+    { title: "Staff Meeting", body: "There will be a staff meeting on Friday at 10:00 AM in the boardroom." },
+    { title: "System Update", body: "The system will be undergoing maintenance on Sunday from 00:00–02:00." },
+  ],
+  profiles: {
+    ADMIN: { name: "S. Ndaba", email: "s.ndaba@mediqueue.co.za", phone: "071 111 2222" },
+    RECEPTIONIST: { name: "Thandi M.", email: "thandi.m@mediqueue.co.za", phone: "071 234 5678" },
+    DOCTOR: { name: "Dr. N. Zulu", email: "n.zulu@mediqueue.co.za", phone: "082 345 6789" },
+    NURSE: { name: "Bongikazi M.", email: "b.mnyamana@mediqueue.co.za", phone: "072 111 2233" },
+    PHARMACIST: { name: "P. Adams", email: "p.adams@mediqueue.co.za", phone: "063 456 7890" },
+  },
 };
 
 const DATA_KEY = "mq_data";

@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>MediQueue — Log in</title>
-<link rel="icon" href="assets/images/logo-icon.png" type="image/png" />
+<link rel="icon" href="../assets/images/logo-icon.png" type="image/png" />
 <link rel="stylesheet" href="../css/styles.css" />
 </head>
 <body>
@@ -33,14 +33,16 @@
     <div class="login-form-sub">Select your role to see the right dashboard</div>
     <form id="loginForm">
       <div class="field">
-        <label for="roleSelect">User role</label>
+       <label for="roleSelect">User role</label>
         <div class="input-wrap">
-          <select class="input" id="roleSelect" required style="appearance:none;padding-right:38px;">
-            <option value="" selected disabled>Select your role</option>
-            <option value="ADMIN">Receptionist / Admin</option>
-            <option value="DOCTOR">Doctor</option>
-            <option value="PHARMACIST">Pharmacist</option>
-          </select>
+        <select class="input" id="roleSelect" required style="appearance:none;padding-right:38px;">
+  <option value="" selected disabled>Select your role</option>
+  <option value="ADMIN">Administrator</option>
+  <option value="RECEPTIONIST">Receptionist</option>
+  <option value="DOCTOR">Doctor</option>
+  <option value="NURSE">Nurse</option>
+  <option value="PHARMACIST">Pharmacist</option>
+</select>
           <span class="input-icon-btn" style="pointer-events:none;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
           </span>
@@ -67,7 +69,13 @@
 </div>
 <script src="../js/data.js"></script>
 <script>
-  const ROLE_HOME = { ADMIN: "admin-dashboard.html", DOCTOR: "doctor-dashboard.html", PHARMACIST: "pharmacist-dashboard.html" };
+const ROLE_HOME = {
+  ADMIN: "admin-dashboard.html",
+  RECEPTIONIST: "receptionist-dashboard.html",
+  DOCTOR: "doctor-dashboard.html",
+  NURSE: "nurse-dashboard.html",
+  PHARMACIST: "pharmacist-dashboard.html",
+};
   document.getElementById("togglePwBtn").addEventListener("click", () => {
     const pw = document.getElementById("password");
     pw.type = pw.type === "password" ? "text" : "password";
@@ -79,10 +87,7 @@
     localStorage.setItem("mq_role", role);
     window.location.href = ROLE_HOME[role];
   });
-  document.getElementById("loginAsPatientBtn").addEventListener("click", () => {
-    localStorage.setItem("mq_role", "ADMIN");
-    window.location.href = "admin-dashboard.html";
-  });
+ 
 </script>
 </body>
 </html>
