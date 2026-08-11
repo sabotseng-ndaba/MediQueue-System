@@ -40,71 +40,59 @@
     </div>
     <div class="main">
       <div class="topbar">
-        <span class="role-badge">Receptionist / Admin dashboard</span>
+        <span class="role-badge">Administrator dashboard</span>
         <div class="topbar-right">
           <div class="bell-wrap"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><div class="bell-dot"></div></div>
           <div class="user-block">
             <div class="avatar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a6 6 0 0 1 12 0v2"/></svg></div>
-            <div><div class="user-name">Thandi M.</div><div class="user-role">Receptionist / Admin</div></div>
+            <div><div class="user-name">Thandi M.</div><div class="user-role">Administrator</div></div>
           </div>
         </div>
       </div>
-      <div class="content">
-        <div class="page-header">
-          <div><h1 class="page-title font-display">Departments</h1><div class="page-sub">Live snapshot of every department in the clinic</div></div>
-        </div>
-        <div class="dept-grid">
-      <div class="dept-card">
-        <div class="dept-card-head">
-          <div style="font-weight:700;font-size:15.5px;">General Medicine</div>
-          <div class="dept-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="1"/><path d="M9 22v-4h6v4M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01"/></svg></div>
-        </div>
-        <div class="dept-stats">
-          <div><div class="dept-stat-num">4</div><div class="dept-stat-label">Doctors on duty</div></div>
-          <div><div class="dept-stat-num">18</div><div class="dept-stat-label">Patients today</div></div>
-          <div><div class="dept-stat-num" style="color:var(--gold)">12 min</div><div class="dept-stat-label">Avg. wait</div></div>
-        </div>
-      </div>
-      <div class="dept-card">
-        <div class="dept-card-head">
-          <div style="font-weight:700;font-size:15.5px;">Pediatrics</div>
-          <div class="dept-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="1"/><path d="M9 22v-4h6v4M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01"/></svg></div>
-        </div>
-        <div class="dept-stats">
-          <div><div class="dept-stat-num">2</div><div class="dept-stat-label">Doctors on duty</div></div>
-          <div><div class="dept-stat-num">11</div><div class="dept-stat-label">Patients today</div></div>
-          <div><div class="dept-stat-num" style="color:var(--gold)">9 min</div><div class="dept-stat-label">Avg. wait</div></div>
-        </div>
-      </div>
-      <div class="dept-card">
-        <div class="dept-card-head">
-          <div style="font-weight:700;font-size:15.5px;">Antenatal Care</div>
-          <div class="dept-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="1"/><path d="M9 22v-4h6v4M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01"/></svg></div>
-        </div>
-        <div class="dept-stats">
-          <div><div class="dept-stat-num">2</div><div class="dept-stat-label">Doctors on duty</div></div>
-          <div><div class="dept-stat-num">7</div><div class="dept-stat-label">Patients today</div></div>
-          <div><div class="dept-stat-num" style="color:var(--gold)">14 min</div><div class="dept-stat-label">Avg. wait</div></div>
-        </div>
-      </div>
-      <div class="dept-card">
-        <div class="dept-card-head">
-          <div style="font-weight:700;font-size:15.5px;">HIV Care</div>
-          <div class="dept-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="1"/><path d="M9 22v-4h6v4M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01"/></svg></div>
-        </div>
-        <div class="dept-stats">
-          <div><div class="dept-stat-num">3</div><div class="dept-stat-label">Doctors on duty</div></div>
-          <div><div class="dept-stat-num">9</div><div class="dept-stat-label">Patients today</div></div>
-          <div><div class="dept-stat-num" style="color:var(--gold)">6 min</div><div class="dept-stat-label">Avg. wait</div></div>
-        </div>
-      </div>
-        </div>
-      </div>
+<div class="content">
+          <a href="admin-dashboard.html" class="link" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;margin-bottom:14px;text-decoration:none;">
+  ← Back to Dashboard
+</a>
+  <div class="page-header">
+    <div><h1 class="page-title font-display">Departments</h1><div class="page-sub">Live snapshot of every department in the clinic</div></div>
+    <button class="btn btn-primary" onclick="openModal('addDeptModal')">+ Add department</button>
+  </div>
+  <div class="dept-grid" id="deptGrid"></div>
+</div>
+
+<div class="modal-overlay" id="addDeptModal" style="display:none;" onclick="if(event.target===this) closeModal('addDeptModal')">
+  <div class="modal-box">
+    <div class="modal-head"><h3 class="modal-title font-display">Add department</h3><button class="modal-close" onclick="closeModal('addDeptModal')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l18 18"/></svg></button></div>
+    <form id="addDeptForm">
+      <div class="field"><label>Department name</label><input class="input" id="adName" required /></div>
+      <div class="field"><label>Doctors on duty</label><input class="input" id="adDoctors" type="number" required /></div>
+      <div class="field"><label>Patients today</label><input class="input" id="adToday" type="number" required /></div>
+      <div class="field"><label>Average wait</label><input class="input" id="adAvgWait" placeholder="e.g. 10 min" required /></div>
+      <button type="submit" class="btn btn-primary btn-block" style="margin-top:6px;">Add department</button>
+    </form>
+  </div>
+</div>
+
+<div class="modal-overlay" id="editDeptModal" style="display:none;" onclick="if(event.target===this) closeModal('editDeptModal')">
+  <div class="modal-box">
+    <div class="modal-head"><h3 class="modal-title font-display">Edit department</h3><button class="modal-close" onclick="closeModal('editDeptModal')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l18 18"/></svg></button></div>
+    <form id="editDeptForm">
+      <input type="hidden" id="edIndex" />
+      <div class="field"><label>Department name</label><input class="input" id="edName" required /></div>
+      <div class="field"><label>Doctors on duty</label><input class="input" id="edDoctors" type="number" required /></div>
+      <div class="field"><label>Patients today</label><input class="input" id="edToday" type="number" required /></div>
+      <div class="field"><label>Average wait</label><input class="input" id="edAvgWait" required /></div>
+      <button type="submit" class="btn btn-primary btn-block" style="margin-top:6px;">Save changes</button>
+    </form>
+  </div>
+</div>
     </div>
   </div>
-  
-  <script src="../js/data.js"></script>
-  <script src="../js/guard.js"></script>
+<script src="../js/data.js"></script>
+<script src="../js/guard.js"></script>
+<script src="../js/render-helpers.js"></script>
+<script src="../js/modal.js"></script>
+<script src="../js/pages/departments.js"></script>
   
 </body>
 </html>

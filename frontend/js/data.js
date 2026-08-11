@@ -3,12 +3,7 @@
 // the site is opened, then provides get/set helpers so each page's script
 // can read and update shared data without page reloads wiping it out.
 
-const DEPARTMENTS = [
-  { name: "General Medicine", doctors: 4, today: 18, avgWait: "12 min" },
-  { name: "Pediatrics", doctors: 2, today: 11, avgWait: "9 min" },
-  { name: "Antenatal Care", doctors: 2, today: 7, avgWait: "14 min" },
-  { name: "HIV Care", doctors: 3, today: 9, avgWait: "6 min" },
-];
+
 
 const DEFAULT_DATA = {
   patients: [
@@ -52,19 +47,26 @@ const DEFAULT_DATA = {
     { id: "RX-505", patient: "Jacob van Wyk", medication: "Paracetamol 500mg", dosage: "2 tabs 3x daily", prescribedBy: "Dr. N. Zulu", duration: "5 days", date: "30 Jul 2026", status: "Dispensed" },
   ],
   users: [
-    { name: "Thandi M.", role: "Receptionist", email: "thandi.m@mediqueue.co.za", status: "Active" },
-    { name: "Dr. N. Zulu", role: "Doctor", email: "n.zulu@mediqueue.co.za", status: "Active" },
-    { name: "Dr. L. Pillay", role: "Doctor", email: "l.pillay@mediqueue.co.za", status: "Active" },
-    { name: "P. Adams", role: "Pharmacist", email: "p.adams@mediqueue.co.za", status: "Active" },
+    { name: "Thandi M.", role: "Receptionist", email: "thandi.m@mediqueue.co.za", status: "Active", clinic: "District Six Clinic", department: "General Medicine" },
+    { name: "Dr. N. Zulu", role: "Doctor", email: "n.zulu@mediqueue.co.za", status: "Active", clinic: "District Six Clinic", department: "General Medicine" },
+    { name: "Dr. L. Pillay", role: "Doctor", email: "l.pillay@mediqueue.co.za", status: "Active", clinic: "Bellville Clinic", department: "Pediatrics" },
+    { name: "P. Adams", role: "Pharmacist", email: "p.adams@mediqueue.co.za", status: "Active", clinic: "Bellville Clinic", department: "General Medicine" },
   ],
   
   
-  seenToday: 14,
+ 
 seenToday: 14,
+  departments: [
+    { name: "General Medicine", doctors: 4, today: 18, avgWait: "12 min" },
+    { name: "Pediatrics", doctors: 2, today: 11, avgWait: "9 min" },
+    { name: "Antenatal Care", doctors: 2, today: 7, avgWait: "14 min" },
+    { name: "HIV Care", doctors: 3, today: 9, avgWait: "6 min" },
+  ],
   clinics: [
-    { name: "MediQueue Central Clinic", location: "Cape Town CBD" },
-    { name: "MediQueue Khayelitsha", location: "Khayelitsha" },
-    { name: "MediQueue Mitchells Plain", location: "Mitchells Plain" },
+    { id: "CL001", name: "District Six Clinic", code: "DS-01", location: "Cape Town", contact: "021 555 1001", email: "district6@mediqueue.co.za", hours: "08:00 - 17:00", status: "Active" },
+    { id: "CL002", name: "Bellville Clinic", code: "BV-02", location: "Bellville", contact: "021 555 1002", email: "bellville@mediqueue.co.za", hours: "08:00 - 17:00", status: "Active" },
+    { id: "CL003", name: "Khayelitsha Clinic", code: "KL-03", location: "Khayelitsha", contact: "021 555 1003", email: "khayelitsha@mediqueue.co.za", hours: "07:30 - 16:30", status: "Inactive" },
+    { id: "CL004", name: "Mitchells Plain Clinic", code: "MP-04", location: "Mitchells Plain", contact: "021 555 1004", email: "mitchellsplain@mediqueue.co.za", hours: "08:00 - 17:00", status: "Active" },
   ],
 
   announcements: [
@@ -92,3 +94,4 @@ function setData(data) { localStorage.setItem(DATA_KEY, JSON.stringify(data)); }
 function resetData() { localStorage.setItem(DATA_KEY, JSON.stringify(DEFAULT_DATA)); }
 
 initData();
+const DEPARTMENTS = getData().departments;

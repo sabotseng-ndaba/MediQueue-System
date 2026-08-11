@@ -49,43 +49,45 @@
           </div>
         </div>
       </div>
-      <div class="content">
-        <div class="page-header">
-          <div><h1 class="page-title font-display">Reports</h1><div class="page-sub">Weekly clinic performance summary</div></div>
-        </div>
-        <div class="cards-row">
-          <div class="card"><div class="card-label">Avg. wait time</div><div class="card-value font-display">9.4 min</div><div class="card-sub">-2.1 min this week</div></div>
-          <div class="card"><div class="card-label">Patients served</div><div class="card-value font-display">312</div><div class="card-sub">This week</div></div>
-          <div class="card"><div class="card-label">No-show rate</div><div class="card-value font-display">6%</div><div class="card-sub">-1% this week</div></div>
-          <div class="card"><div class="card-label">Peak hour</div><div class="card-value font-display">10–11 AM</div></div>
-        </div>
-        <div class="panel">
-          <div class="panel-head"><div class="panel-title">Patients served by department</div></div>
-          <div style="padding:20px;">
-        <div class="bar-row">
-          <div class="bar-row-top"><span style="font-weight:600;">General Medicine</span><span style="color:var(--slate)">18 patients</span></div>
-          <div class="bar-track"><div class="bar-fill" style="width:72%"></div></div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-row-top"><span style="font-weight:600;">Pediatrics</span><span style="color:var(--slate)">11 patients</span></div>
-          <div class="bar-track"><div class="bar-fill" style="width:44%"></div></div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-row-top"><span style="font-weight:600;">Antenatal Care</span><span style="color:var(--slate)">7 patients</span></div>
-          <div class="bar-track"><div class="bar-fill" style="width:28%"></div></div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-row-top"><span style="font-weight:600;">HIV Care</span><span style="color:var(--slate)">9 patients</span></div>
-          <div class="bar-track"><div class="bar-fill" style="width:36%"></div></div>
-        </div>
-          </div>
-        </div>
-      </div>
+<div class="content">
+          <a href="admin-dashboard.html" class="link" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;margin-bottom:14px;text-decoration:none;">
+  ← Back to Dashboard
+</a>
+  <div class="page-header">
+    <div><h1 class="page-title font-display">Reports</h1><div class="page-sub">System-wide overview across all clinics</div></div>
+  </div>
+
+  <div class="cards-row" id="statCards"></div>
+
+  <div class="grid-2" style="margin-top:20px;">
+<div class="panel">
+  <div class="panel-head"><div class="panel-title">Patients by department</div></div>
+  <div id="deptChart" style="padding:20px;"></div>
+</div>
+  <div class="panel">
+  <div class="panel-head"><div class="panel-title">Staff by role</div></div>
+  <div id="roleChart" style="padding:20px;"></div>
+</div>
+  </div>
+
+  <div class="grid-2" style="margin-top:20px;">
+    <div class="panel">
+      <div class="panel-head"><div class="panel-title">Clinic status overview</div></div>
+      <div id="clinicStatus" style="padding:16px 20px;"></div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><div class="panel-title">Appointment status breakdown</div></div>
+      <div id="apptStatus" style="padding:16px 20px;"></div>
     </div>
   </div>
-  
-  <script src="../js/data.js"></script>
-  <script src="../js/guard.js"></script>
+</div>
+    </div>
+  </div>
+
+<script src="../js/data.js"></script>
+<script src="../js/guard.js"></script>
+<script src="../js/render-helpers.js"></script>
+<script src="../js/pages/reports.js"></script>
   
 </body>
 </html>
