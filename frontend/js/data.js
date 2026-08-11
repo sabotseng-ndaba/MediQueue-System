@@ -73,12 +73,12 @@ seenToday: 14,
     { title: "Staff Meeting", body: "There will be a staff meeting on Friday at 10:00 AM in the boardroom." },
     { title: "System Update", body: "The system will be undergoing maintenance on Sunday from 00:00–02:00." },
   ],
-  profiles: {
-    ADMIN: { name: "S. Ndaba", email: "s.ndaba@mediqueue.co.za", phone: "071 111 2222" },
-    RECEPTIONIST: { name: "Thandi M.", email: "thandi.m@mediqueue.co.za", phone: "071 234 5678" },
-    DOCTOR: { name: "Dr. N. Zulu", email: "n.zulu@mediqueue.co.za", phone: "082 345 6789" },
-    NURSE: { name: "Bongikazi M.", email: "b.mnyamana@mediqueue.co.za", phone: "072 111 2233" },
-    PHARMACIST: { name: "P. Adams", email: "p.adams@mediqueue.co.za", phone: "063 456 7890" },
+profiles: {
+    ADMIN: { name: "S. Ndaba", email: "s.ndaba@mediqueue.co.za", phone: "071 111 2222", clinic: "District Six Clinic", department: "General Medicine", joinDate: "Jan 2025" },
+    RECEPTIONIST: { name: "Thandi M.", email: "thandi.m@mediqueue.co.za", phone: "071 234 5678", clinic: "District Six Clinic", department: "General Medicine", joinDate: "Mar 2025" },
+    DOCTOR: { name: "Dr. N. Zulu", email: "n.zulu@mediqueue.co.za", phone: "082 345 6789", clinic: "District Six Clinic", department: "General Medicine", joinDate: "Aug 2023" },
+    NURSE: { name: "Bongikazi M.", email: "b.mnyamana@mediqueue.co.za", phone: "072 111 2233", clinic: "Bellville Clinic", department: "Pediatrics", joinDate: "Feb 2024" },
+    PHARMACIST: { name: "P. Adams", email: "p.adams@mediqueue.co.za", phone: "063 456 7890", clinic: "Bellville Clinic", department: "General Medicine", joinDate: "Jun 2024" },
   },
 };
 

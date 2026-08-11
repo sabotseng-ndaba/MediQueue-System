@@ -1,6 +1,5 @@
 // js/pages/profile.js
-// Builds the sidebar dynamically (this page is shared across all three
-// roles, unlike other pages which have the sidebar hardcoded per role),
+// Builds the sidebar dynamically (this page is shared across all roles),
 // loads the current role's profile into the form, and saves edits back
 // into the same mock "database" every other page reads from.
 
@@ -10,7 +9,7 @@ const NAV_BY_ROLE = {
     ["Users", "users.html"], ["Reports", "reports.html"],
   ],
   RECEPTIONIST: [
-    ["Dashboard", "admin-dashboard.html"], ["Patients", "patients.html"],
+    ["Dashboard", "receptionist-dashboard.html"], ["Patients", "patients.html"],
     ["Appointments", "appointments.html"], ["Queue Management", "queue.html"],
   ],
   DOCTOR: [
@@ -33,8 +32,10 @@ const ROLE_LABEL = {
   ADMIN: "Administrator", RECEPTIONIST: "Receptionist",
   DOCTOR: "Doctor", NURSE: "Nurse", PHARMACIST: "Pharmacist",
 };
-const ROLE_BADGE = { ADMIN: "Receptionist / Admin dashboard", DOCTOR: "Doctor dashboard", PHARMACIST: "Pharmacist dashboard" };
-const ROLE_LABEL = { ADMIN: "Receptionist / Admin", DOCTOR: "Doctor", PHARMACIST: "Pharmacist" };
+
+function initials(name) {
+  return name.split(" ").filter(Boolean).map(w => w[0]).join("").slice(0, 2).toUpperCase();
+}
 
 function buildSidebar() {
   const role = localStorage.getItem("mq_role");
@@ -59,7 +60,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const profile = data.profiles[role];
 
   document.getElementById("userName").textContent = profile.name;
-  document.getElementById("avatarIcon").innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a6 6 0 0 1 12 0v2"/></svg>';
+  document.getElementById("avatarIcon").innerHTML = initials(profile.name);
+  document.getElementById("avatarInitials").textContent = initials(profile.name);
+  document.getElementById("profileNameHeading").textContent = profile.name;
+  document.getElementById("profileRoleTag").textContent = ROLE_LABEL[role] || "";
+  document.getElementById("profileClinic").textContent = profile.clinic || "—";
+  document.getElementById("profileDept").textContent = profile.department || "—";
+  document.getElementById("profileJoinDate").textContent = profile.joinDate || "—";
+
   document.getElementById("pName").value = profile.name;
   document.getElementById("pEmail").value = profile.email;
   document.getElementById("pPhone").value = profile.phone;
@@ -68,12 +76,16 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     const d = getData();
     d.profiles[role] = {
+      ...d.profiles[role],
       name: document.getElementById("pName").value.trim(),
       email: document.getElementById("pEmail").value.trim(),
       phone: document.getElementById("pPhone").value.trim(),
     };
     setData(d);
     document.getElementById("userName").textContent = d.profiles[role].name;
+    document.getElementById("profileNameHeading").textContent = d.profiles[role].name;
+    document.getElementById("avatarInitials").textContent = initials(d.profiles[role].name);
+    document.getElementById("avatarIcon").innerHTML = initials(d.profiles[role].name);
     showSuccess("Profile updated.");
   });
 
@@ -85,7 +97,6 @@ document.addEventListener("DOMContentLoaded", () => {
       showSuccess("Passwords don't match.", true);
       return;
     }
-    // No real backend/auth yet — this just confirms the form works.
     document.getElementById("passwordForm").reset();
     showSuccess("Password updated.");
   });
