@@ -1,224 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Clinics | MediQueue</title>
-
-    <link rel="stylesheet" href="../css/style1.css">
-
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MediQueue — Clinics</title>
+<link rel="icon" href="../assets/images/logo-icon.png" type="image/png" />
+<link rel="stylesheet" href="../css/styles.css" />
 </head>
 <body>
-
-<!-- ================= SIDEBAR ================= -->
-
-<div class="sidebar">
-
-    <div class="logo">
-        <img src="../images/logo.png" alt="MediQueue Logo">
+  <div class="app-shell">
+    <div class="sidebar">
+      <div class="sidebar-brand">
+        <img src="../assets/images/logo-icon.png" alt="MediQueue" />
+        <div class="sidebar-brand-name font-display">MediQueue</div>
+      </div>
+      <div class="nav">
+        <a class="nav-item" href="admin-dashboard.html">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+          Dashboard
+        </a>
+        <a class="nav-item active" href="clinics.html">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="1"/><path d="M9 22v-4h6v4M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01"/></svg>
+          Clinics
+        </a>
+        <a class="nav-item" href="departments.html">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="1"/><path d="M9 22v-4h6v4M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01"/></svg>
+          Departments
+        </a>
+        <a class="nav-item" href="users.html">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M2 21v-2a4 4 0 0 1 4-4h3"/><circle cx="18" cy="17" r="3"/></svg>
+          Users
+        </a>
+        <a class="nav-item" href="reports.html">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-4"/></svg>
+          Reports
+        </a>
+      </div>
+      <a class="nav-logout" href="index.html" id="logoutLink"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg> Logout</a>
     </div>
-
-    <div class="menu">
-
-        <a href="admindashboard.html">
-            <i class="fa-solid fa-table-columns"></i>
-            Dashboard
-        </a>
-
-        <a href="clinic.html" class="active">
-            <i class="fa-solid fa-hospital"></i>
-            Clinics
-        </a>
-
-        <a href="add-department.html">
-            <i class="fa-solid fa-building"></i>
-            Departments
-        </a>
-
-        <a href="login.html">
-            <i class="fa-solid fa-right-from-bracket"></i>
-            Logout
-        </a>
-
-    </div>
-
-</div>
-
-<!-- ================= TOPBAR ================= -->
-
-<div class="topbar">
-
-    <h2>View Clinics</h2>
-
-    <div class="user">
-
-        <div class="avatar">SA</div>
-
-        <div>
-            <strong>Sabo Admin</strong><br>
-            <small>System Administrator</small>
+    <div class="main">
+      <div class="topbar">
+        <span class="role-badge">Administrator dashboard</span>
+        <div class="topbar-right">
+          <div class="bell-wrap"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><div class="bell-dot"></div></div>
+          <div class="user-block">
+            <div class="avatar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a6 6 0 0 1 12 0v2"/></svg></div>
+            <div><div class="user-name"></div><div class="user-role">Administrator</div></div>
+          </div>
         </div>
-
-    </div>
-
-</div>
-
-<!-- ================= MAIN ================= -->
-
-<div class="main">
-
-    <div class="card">
-
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
-
-            <h3 class="card-title">
-                Registered Clinics
-            </h3>
-
-            <button class="btn btn-primary"
-                    onclick="location.href='add-clinic.html'">
-
-                <i class="fa-solid fa-plus"></i>
-                Add Clinic
-
-            </button>
-
+      </div>
+      <div class="content">
+                <a href="admin-dashboard.html" class="link" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;margin-bottom:14px;text-decoration:none;">
+  ← Back to Dashboard
+</a>
+        <div class="page-header">
+                   
+          <div><h1 class="page-title font-display">Clinics</h1><div class="page-sub">Registered clinics across the network</div></div>
+          <div style="display:flex;gap:10px;">
+            <div class="search-wrap"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input class="search-input" placeholder="Search clinic..." /></div>
+            <button class="btn btn-primary" onclick="openModal('addClinicModal')">+ Add clinic</button>
+          </div>
         </div>
-
-        <div class="form-group">
-
-            <input
-                type="text"
-                placeholder="Search clinic by name...">
-
+        <div class="panel">
+          <div class="panel-head"><div class="panel-title" id="clinicsCount">Loading…</div></div>
+          <div class="table-scroll"><table>
+            <thead><tr><th>Clinic ID</th><th>Name</th><th>Location</th><th>Contact</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody id="clinicsBody"></tbody>
+          </table></div>
         </div>
-
-        <table>
-
-            <thead>
-
-            <tr>
-
-                <th>Clinic ID</th>
-                <th>Clinic Name</th>
-                <th>Location</th>
-                <th>Contact</th>
-                <th>Status</th>
-                <th>Actions</th>
-
-            </tr>
-
-            </thead>
-
-            <tbody>
-
-            <tr>
-
-                <td>CL001</td>
-                <td>District Six Clinic</td>
-                <td>Cape Town</td>
-                <td>021 555 1001</td>
-                <td class="status-active">Active</td>
-
-                <td>
-
-                    <button class="btn btn-secondary">
-                        <i class="fa-solid fa-pen"></i>
-                        Edit
-                    </button>
-
-                    <button class="btn btn-secondary">
-                        <i class="fa-solid fa-trash"></i>
-                        Delete
-                    </button>
-
-                </td>
-
-            </tr>
-
-            <tr>
-
-                <td>CL002</td>
-                <td>Bellville Clinic</td>
-                <td>Bellville</td>
-                <td>021 555 1002</td>
-                <td class="status-active">Active</td>
-
-                <td>
-
-                    <button class="btn btn-secondary">
-                        <i class="fa-solid fa-pen"></i>
-                        Edit
-                    </button>
-
-                    <button class="btn btn-secondary">
-                        <i class="fa-solid fa-trash"></i>
-                        Delete
-                    </button>
-
-                </td>
-
-            </tr>
-
-            <tr>
-
-                <td>CL003</td>
-                <td>Khayelitsha Clinic</td>
-                <td>Khayelitsha</td>
-                <td>021 555 1003</td>
-                <td class="status-inactive">Inactive</td>
-
-                <td>
-
-                    <button class="btn btn-secondary">
-                        <i class="fa-solid fa-pen"></i>
-                        Edit
-                    </button>
-
-                    <button class="btn btn-secondary">
-                        <i class="fa-solid fa-trash"></i>
-                        Delete
-                    </button>
-
-                </td>
-
-            </tr>
-
-            <tr>
-
-                <td>CL004</td>
-                <td>Mitchells Plain Clinic</td>
-                <td>Mitchells Plain</td>
-                <td>021 555 1004</td>
-                <td class="status-active">Active</td>
-
-                <td>
-
-                    <button class="btn btn-secondary">
-                        <i class="fa-solid fa-pen"></i>
-                        Edit
-                    </button>
-
-                    <button class="btn btn-secondary">
-                        <i class="fa-solid fa-trash"></i>
-                        Delete
-                    </button>
-
-                </td>
-
-            </tr>
-
-            </tbody>
-
-        </table>
-
+      </div>
     </div>
+  </div>
 
-</div>
+  <div class="modal-overlay" id="addClinicModal" style="display:none;" onclick="if(event.target===this) closeModal('addClinicModal')">
+    <div class="modal-box">
+      <div class="modal-head"><h3 class="modal-title font-display">Add clinic</h3><button class="modal-close" onclick="closeModal('addClinicModal')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l18 18"/></svg></button></div>
+      <form id="addClinicForm">
+        <div class="field"><label>Clinic name</label><input class="input" id="acName" required /></div>
+        <div class="form-row-2">
+          <div class="field"><label>Clinic code</label><input class="input" id="acCode" required /></div>
+          <div class="field"><label>Location</label><input class="input" id="acLocation" required /></div>
+        </div>
+        <div class="field"><label>Contact number</label><input class="input" id="acContact" required /></div>
+        <div class="field"><label>Email</label><input class="input" id="acEmail" type="email" required /></div>
+        <div class="field"><label>Operating hours</label><input class="input" id="acHours" placeholder="e.g. 08:00 - 17:00" /></div>
+        <div class="field"><label>Status</label><select class="input" id="acStatus"><option>Active</option><option>Inactive</option></select></div>
+        <button type="submit" class="btn btn-primary btn-block" style="margin-top:6px;">Add clinic</button>
+      </form>
+    </div>
+  </div>
 
-<script src="../js/script1.js"></script>
+  <div class="modal-overlay" id="editClinicModal" style="display:none;" onclick="if(event.target===this) closeModal('editClinicModal')">
+    <div class="modal-box">
+      <div class="modal-head"><h3 class="modal-title font-display">Edit clinic</h3><button class="modal-close" onclick="closeModal('editClinicModal')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l18 18"/></svg></button></div>
+      <form id="editClinicForm">
+        <input type="hidden" id="ecIndex" />
+        <div class="field"><label>Clinic name</label><input class="input" id="ecName" required /></div>
+        <div class="form-row-2">
+          <div class="field"><label>Clinic code</label><input class="input" id="ecCode" required /></div>
+          <div class="field"><label>Location</label><input class="input" id="ecLocation" required /></div>
+        </div>
+        <div class="field"><label>Contact number</label><input class="input" id="ecContact" required /></div>
+        <div class="field"><label>Email</label><input class="input" id="ecEmail" type="email" required /></div>
+        <div class="field"><label>Operating hours</label><input class="input" id="ecHours" /></div>
+        <div class="field"><label>Status</label><select class="input" id="ecStatus"><option>Active</option><option>Inactive</option></select></div>
+        <button type="submit" class="btn btn-primary btn-block" style="margin-top:6px;">Save changes</button>
+      </form>
+    </div>
+  </div>
 
+  <script src="../js/data.js"></script>
+  <script src="../js/guard.js"></script>
+  <script src="../js/render-helpers.js"></script>
+  <script src="../js/modal.js"></script>
+  <script src="../js/pages/clinics.js"></script>
 </body>
 </html>
