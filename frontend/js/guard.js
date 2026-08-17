@@ -1,7 +1,8 @@
 // js/guard.js — loaded on every page except index.html.
 // Redirects to login if nobody's logged in, wires up Logout,
-// applies the saved profile name to the topbar, and wires up
-// the notification bell + profile dropdowns.
+// applies the saved profile name to the topbar, wires up the
+// notification bell + profile dropdowns, and sets up the mobile
+// hamburger menu.
 
 const ROLE_KEY = "mq_role";
 
@@ -23,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
   applyProfileName();
   setupNotifications();
   setupProfileMenu();
+  setupMobileNav();
 
   document.addEventListener("click", () => {
     document.querySelectorAll(".dropdown-panel").forEach((d) => (d.style.display = "none"));
@@ -81,7 +83,6 @@ function setupProfileMenu() {
   const userBlock = document.querySelector(".user-block");
   if (!userBlock) return;
 
-  const role = localStorage.getItem(ROLE_KEY);
   const roleLabel = userBlock.querySelector(".user-role")?.textContent || "";
 
   const dropdown = document.createElement("div");
@@ -105,4 +106,32 @@ function setupProfileMenu() {
     localStorage.removeItem(ROLE_KEY);
     window.location.href = "index.html";
   });
+}
+
+function setupMobileNav() {
+  const topbar = document.querySelector(".topbar");
+  const sidebar = document.querySelector(".sidebar");
+  if (!topbar || !sidebar) return;
+
+  const btn = document.createElement("button");
+  btn.className = "hamburger-btn";
+  btn.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>';
+  topbar.prepend(btn);
+
+  const backdrop = document.createElement("div");
+  backdrop.className = "sidebar-backdrop";
+  document.body.appendChild(backdrop);
+
+  function closeNav() {
+    sidebar.classList.remove("mobile-open");
+    backdrop.classList.remove("mobile-open");
+  }
+
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    sidebar.classList.toggle("mobile-open");
+    backdrop.classList.toggle("mobile-open");
+  });
+  backdrop.addEventListener("click", closeNav);
+  sidebar.querySelectorAll(".nav-item").forEach((link) => link.addEventListener("click", closeNav));
 }
