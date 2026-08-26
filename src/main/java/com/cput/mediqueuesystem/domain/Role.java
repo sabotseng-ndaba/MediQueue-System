@@ -3,6 +3,10 @@ package com.cput.mediqueuesystem.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,10 +24,12 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "role")
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class Role {
 
     // Primary Key
     @Id
+    @JsonProperty("roleId")
     @Column(name = "role_id")
     private String roleId;
 
@@ -32,7 +38,8 @@ public class Role {
     private String roleName;
 
     // One role can belong to many users
-    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, orphanRemoval = false)
     private List<User> users = new ArrayList<>();
 
     // Default constructor required by JPA
