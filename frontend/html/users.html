@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MediQueue — Users</title>
+<link rel="icon" href="assets/images/logo-icon.png" type="image/png" />
+<link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <div class="sidebar">
+      <div class="sidebar-brand">
+        <img src="../assets/images/logo-icon.png" alt="MediQueue" />
+        <div class="sidebar-brand-name font-display">MediQueue</div>
+      </div>
+  <div class="nav">
+  <a class="nav-item" href="admin-dashboard.html">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+    Dashboard
+  </a>
+  <a class="nav-item" href="clinics.html">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="1"/><path d="M9 22v-4h6v4M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01"/></svg>
+    Clinics
+  </a>
+  <a class="nav-item" href="departments.html">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="1"/><path d="M9 22v-4h6v4M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01"/></svg>
+    Departments
+  </a>
+  <a class="nav-item active" href="users.html">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M2 21v-2a4 4 0 0 1 4-4h3"/><circle cx="18" cy="17" r="3"/></svg>
+    Users
+  </a>
+  <a class="nav-item" href="reports.html">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-4"/></svg>
+    Reports
+  </a>
+</div>
+      <a class="nav-logout" href="index.html" id="logoutLink"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg> Logout</a>
+    </div>
+    <div class="main">
+      <div class="topbar">
+        <span class="role-badge">Administrator dashboard</span>
+        <div class="topbar-right">
+          <div class="bell-wrap"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><div class="bell-dot"></div></div>
+          <div class="user-block">
+            <div class="avatar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a6 6 0 0 1 12 0v2"/></svg></div>
+            <div><div class="user-name">Thandi M.</div><div class="user-role">Administrator</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="content">
+                <a href="admin-dashboard.html" class="link" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;margin-bottom:14px;text-decoration:none;">
+  ← Back to Dashboard
+</a>
+        <div class="page-header">
+          <div><h1 class="page-title font-display">Users</h1><div class="page-sub">Staff accounts with system access</div></div>
+          <div style="display:flex;gap:10px;"><div class="search-wrap"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input class="search-input" placeholder="Search..." /></div></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><div class="panel-title" id="usersBodyCount">Loading…</div></div>
+          <div class="table-scroll">
+            <table>
+             <thead><tr><th>Name</th><th>Role</th><th>Email</th><th>Clinic</th><th>Department</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody id="usersBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="../js/data.js"></script>
+  <script src="../js/guard.js"></script>
+  <script src="../js/render-helpers.js"></script>
+  <script src="../js/modal.js"></script>
+  <script src="../js/pages/users.js"></script>
+
+  <div class="modal-overlay" id="addUserModal" style="display:none;" onclick="if(event.target===this) closeModal('addUserModal')">
+  <div class="modal-box">
+    <div class="modal-head"><h3 class="modal-title font-display">Add user</h3><button class="modal-close" onclick="closeModal('addUserModal')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l18 18"/></svg></button></div>
+    <form id="addUserForm">
+      <div class="field"><label>Full name</label><input class="input" id="auName" required /></div>
+      <div class="field"><label>Role</label>
+        <select class="input" id="auRole">
+          <option>Administrator</option><option>Receptionist</option><option>Doctor</option><option>Nurse</option><option>Pharmacist</option>
+        </select>
+      </div>
+      <div class="field"><label>Email</label><input class="input" id="auEmail" type="email" required /></div>
+      <div class="form-row-2">
+  <div class="field"><label>Clinic</label><select class="input" id="auClinic"></select></div>
+  <div class="field"><label>Department</label><select class="input" id="auDept"></select></div>
+</div>
+      <button type="submit" class="btn btn-primary btn-block" style="margin-top:6px;">Add user</button>
+    </form>
+  </div>
+</div>
+
+<div class="modal-overlay" id="editUserModal" style="display:none;" onclick="if(event.target===this) closeModal('editUserModal')">
+  <div class="modal-box">
+    <div class="modal-head"><h3 class="modal-title font-display">Edit user</h3><button class="modal-close" onclick="closeModal('editUserModal')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l18 18"/></svg></button></div>
+    <form id="editUserForm">
+      <input type="hidden" id="euIndex" />
+      <div class="field"><label>Full name</label><input class="input" id="euName" required /></div>
+      <div class="field"><label>Role</label>
+        <select class="input" id="euRole">
+          <option>Administrator</option><option>Receptionist</option><option>Doctor</option><option>Nurse</option><option>Pharmacist</option>
+        </select>
+      </div>
+      <div class="field"><label>Email</label><input class="input" id="euEmail" type="email" required /></div>
+      <div class="field"><label>Status</label>
+        <select class="input" id="euStatus"><option>Active</option><option>Inactive</option></select>
+      </div>
+      <div class="field"><label>Email</label><input class="input" id="euEmail" type="email" required /></div>
+<div class="form-row-2">
+  <div class="field"><label>Clinic</label><select class="input" id="euClinic"></select></div>
+  <div class="field"><label>Department</label><select class="input" id="euDept"></select></div>
+</div>
+      <button type="submit" class="btn btn-primary btn-block" style="margin-top:6px;">Save changes</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>

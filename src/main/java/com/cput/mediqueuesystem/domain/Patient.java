@@ -41,6 +41,10 @@ public class Patient extends User {
     @Column(name = "medical_aid_number")
     private String medicalAidNumber;
 
+    // Allergies recorded for the patient
+    @Column(name = "allergies")
+    private String allergies;
+
     // Default constructor required by JPA
     protected Patient() {
     }
@@ -53,6 +57,7 @@ public class Patient extends User {
         this.gender = builder.gender;
         this.address = builder.address;
         this.medicalAidNumber = builder.medicalAidNumber;
+        this.allergies = builder.allergies;
     }
 
     // Getters
@@ -77,6 +82,10 @@ public class Patient extends User {
         return medicalAidNumber;
     }
 
+    public String getAllergies() {
+        return allergies;
+    }
+
     @Override
     public String toString() {
         return "Patient{" +
@@ -88,6 +97,7 @@ public class Patient extends User {
                 ", gender='" + gender + '\'' +
                 ", address='" + address + '\'' +
                 ", medicalAidNumber='" + medicalAidNumber + '\'' +
+                ", allergies='" + allergies + '\'' +
                 '}';
     }
 
@@ -101,6 +111,7 @@ public class Patient extends User {
         private String gender;
         private String address;
         private String medicalAidNumber;
+        private String allergies;
 
         public Builder setIdNumber(String idNumber) {
             this.idNumber = idNumber;
@@ -127,6 +138,11 @@ public class Patient extends User {
             return this;
         }
 
+        public Builder setAllergies(String allergies) {
+            this.allergies = allergies;
+            return this;
+        }
+
         public Builder copy(Patient patient) {
             super.copy(patient);
             this.idNumber = patient.idNumber;
@@ -134,6 +150,7 @@ public class Patient extends User {
             this.gender = patient.gender;
             this.address = patient.address;
             this.medicalAidNumber = patient.medicalAidNumber;
+            this.allergies = patient.allergies;
             return this;
         }
 

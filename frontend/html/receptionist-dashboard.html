@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MediQueue — Receptionist Dashboard</title>
+<link rel="icon" href="../assets/images/logo-icon.png" type="image/png" />
+<link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <div class="sidebar">
+      <div class="sidebar-brand">
+        <img src="../assets/images/logo-icon.png" alt="MediQueue" />
+        <div class="sidebar-brand-name font-display">MediQueue</div>
+      </div>
+      <div class="nav">
+        <a class="nav-item active" href="receptionist-dashboard.html">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+          Dashboard
+        </a>
+        <a class="nav-item" href="patients.html">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Patients
+        </a>
+        <a class="nav-item" href="appointments.html">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="m9 16 2 2 4-4"/></svg>
+          Appointments
+        </a>
+        <a class="nav-item" href="queue.html">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+          Queue Management
+        </a>
+      </div>
+      <a class="nav-logout" href="index.html" id="logoutLink">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg>
+        Logout
+      </a>
+    </div>
+    <div class="main">
+      <div class="topbar">
+        <span class="role-badge">Receptionist dashboard</span>
+        <div class="topbar-right">
+          <div class="bell-wrap">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <div class="bell-dot"></div>
+          </div>
+          <div class="user-block">
+            <div class="avatar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a6 6 0 0 1 12 0v2"/></svg></div>
+            <div><div class="user-name"></div><div class="user-role">Receptionist</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <div class="page-header">
+          <div><h1 class="page-title font-display" id="welcomeMsg">Welcome</h1><div class="page-sub">Receptionist</div></div>
+          <div class="badge badge-teal" id="dateLabel" style="font-size:13px;padding:8px 14px;"></div>
+        </div>
+
+        <div class="cards-row" id="statCards"></div>
+
+        <div class="grid-2">
+          <div class="panel">
+            <div class="panel-head"><div class="panel-title">Today's appointments</div><a href="appointments.html" class="link" style="font-size:12.5px;">View all</a></div>
+            <div class="table-scroll"><table>
+              <thead><tr><th>Time</th><th>Patient</th><th>Department</th><th>Status</th></tr></thead>
+              <tbody id="apptsBody"></tbody>
+            </table></div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head"><div class="panel-title">Current queue</div><a href="queue.html" class="link" style="font-size:12.5px;">View full queue</a></div>
+            <div style="padding:18px 20px;">
+              <div class="profile-section-title" style="margin:0 0 8px;">Now serving</div>
+              <div id="nowServing"></div>
+              <div class="profile-section-title">Next in line</div>
+              <div id="nextInLine"></div>
+              <div style="display:flex;gap:10px;margin-top:16px;">
+                <button class="btn btn-primary" id="callNextBtn">Call next patient</button>
+                <button class="btn btn-ghost" onclick="location.reload()">Update queue</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-header" style="margin-top:26px;margin-bottom:12px;">
+          <div><h1 class="page-title font-display" style="font-size:16px;">Quick actions</h1></div>
+        </div>
+        <div class="cards-row">
+          <div class="card" style="cursor:pointer;" onclick="openModal('addPatientModal')">
+            <div class="card-label">Register patient</div>
+            <div style="font-size:13px;color:var(--slate);margin-top:6px;">Add a new patient</div>
+          </div>
+          <div class="card" style="cursor:pointer;" onclick="openModal('bookApptModal')">
+            <div class="card-label">Book appointment</div>
+            <div style="font-size:13px;color:var(--slate);margin-top:6px;">Schedule a new appointment</div>
+          </div>
+          <div class="card" style="cursor:pointer;" onclick="openModal('addQueueModal')">
+            <div class="card-label">Add to queue</div>
+            <div style="font-size:13px;color:var(--slate);margin-top:6px;">Add a walk-in patient</div>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top:20px;">
+          <div class="panel">
+            <div class="panel-head"><div class="panel-title">Recent patients</div><a href="patients.html" class="link" style="font-size:12.5px;">View all</a></div>
+            <div id="recentPatients"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><div class="panel-title">System announcements</div></div>
+            <div id="announcements" style="padding:16px 20px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Register patient modal -->
+  <div class="modal-overlay" id="addPatientModal" style="display:none;" onclick="if(event.target===this) closeModal('addPatientModal')">
+    <div class="modal-box">
+      <div class="modal-head"><h3 class="modal-title font-display">Register new patient</h3><button class="modal-close" onclick="closeModal('addPatientModal')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l18 18"/></svg></button></div>
+      <form id="addPatientForm">
+        <div class="field"><label>Full name</label><input class="input" id="npName" required /></div>
+        <div class="form-row-2">
+          <div class="field"><label>Gender</label><select class="input" id="npGender"><option value="F">Female</option><option value="M">Male</option></select></div>
+          <div class="field"><label>Age</label><input class="input" id="npAge" type="number" required /></div>
+        </div>
+        <div class="field"><label>Phone</label><input class="input" id="npPhone" required /></div>
+        <div class="field"><label>Department</label><select class="input" id="npDept"></select></div>
+        <button type="submit" class="btn btn-primary btn-block" style="margin-top:6px;">Register patient</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Book appointment modal -->
+  <div class="modal-overlay" id="bookApptModal" style="display:none;" onclick="if(event.target===this) closeModal('bookApptModal')">
+    <div class="modal-box">
+      <div class="modal-head"><h3 class="modal-title font-display">Book appointment</h3><button class="modal-close" onclick="closeModal('bookApptModal')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l18 18"/></svg></button></div>
+      <form id="bookApptForm">
+        <div class="field"><label>Patient name</label><input class="input" id="naPatient" required /></div>
+        <div class="field"><label>Department</label><select class="input" id="naDept"></select></div>
+        <div class="field"><label>Doctor</label><input class="input" id="naDoctor" value="Dr. N. Zulu" /></div>
+        <div class="field"><label>Time</label><input class="input" id="naTime" placeholder="e.g. 02:30 PM" required /></div>
+        <button type="submit" class="btn btn-primary btn-block" style="margin-top:6px;">Book appointment</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add to queue modal -->
+  <div class="modal-overlay" id="addQueueModal" style="display:none;" onclick="if(event.target===this) closeModal('addQueueModal')">
+    <div class="modal-box">
+      <div class="modal-head"><h3 class="modal-title font-display">Add walk-in to queue</h3><button class="modal-close" onclick="closeModal('addQueueModal')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l18 18"/></svg></button></div>
+      <form id="addQueueForm">
+        <div class="field"><label>Patient</label><select class="input" id="aqPatient"></select></div>
+        <div class="field"><label>Department</label><select class="input" id="aqDept"></select></div>
+        <button type="submit" class="btn btn-primary btn-block" style="margin-top:6px;">Add to queue</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/guard.js"></script>
+  <script src="../js/render-helpers.js"></script>
+  <script src="../js/modal.js"></script>
+  <script src="../js/pages/receptionist-dashboard.js"></script>
+</body>
+</html>

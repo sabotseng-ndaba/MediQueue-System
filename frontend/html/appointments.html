@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MediQueue — Appointments</title>
+<link rel="icon" href="assets/images/logo-icon.png" type="image/png" />
+<link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <div class="sidebar">
+      <div class="sidebar-brand">
+        <img src="../assets/images/logo-icon.png" alt="MediQueue" />
+        <div class="sidebar-brand-name font-display">MediQueue</div>
+      </div>
+      <div class="nav">
+  <a class="nav-item active" href="receptionist-dashboard.html">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+    Dashboard
+  </a>
+  <a class="nav-item" href="patients.html">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    Patients
+  </a>
+  <a class="nav-item" href="appointments.html">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="m9 16 2 2 4-4"/></svg>
+    Appointments
+  </a>
+  <a class="nav-item" href="queue.html">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    Queue Management
+  </a>
+</div>
+      <a class="nav-logout" href="index.html" id="logoutLink"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg> Logout</a>
+    </div>
+    <div class="main">
+      <div class="topbar">
+        <span class="role-badge">Receptionist dashboard</span>
+        <div class="topbar-right">
+          <div class="bell-wrap"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><div class="bell-dot"></div></div>
+          <div class="user-block">
+            <div class="avatar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a6 6 0 0 1 12 0v2"/></svg></div>
+            <div><div class="user-name">Thandi M.</div><div class="user-role">Receptionist</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <a href="receptionist-dashboard.html" class="link" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;margin-bottom:14px;text-decoration:none;">
+  ← Back to Dashboard
+</a>
+        <div class="page-header">
+          <div><h1 class="page-title font-display">Appointments</h1><div class="page-sub">All bookings across departments</div></div>
+          <div style="display:flex;gap:10px;"><div class="search-wrap"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input class="search-input" placeholder="Search..." /></div><button class="btn btn-primary" onclick="openModal('bookApptModal')"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg> Book appointment</button></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><div class="panel-title" id="apptsBodyCount">Loading…</div></div>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>Time</th><th>Patient</th><th>Department</th><th>Doctor</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody id="apptsBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<div class="modal-overlay" id="bookApptModal" style="display:none;" onclick="if(event.target===this) closeModal('bookApptModal')">
+  <div class="modal-box">
+    <div class="modal-head"><h3 class="modal-title font-display">Book appointment</h3><button class="modal-close" onclick="closeModal('bookApptModal')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l18 18"/></svg></button></div>
+    <form id="bookApptForm">
+      <div class="field"><label for="naPatient">Patient name</label><input class="input" id="naPatient" required /></div>
+      <div class="field"><label for="naDept">Department</label>
+        <select class="input" id="naDept"><option>General Medicine</option><option>Pediatrics</option><option>Antenatal Care</option><option>HIV Care</option></select>
+      </div>
+      <div class="field"><label for="naDoctor">Doctor</label><input class="input" id="naDoctor" value="Dr. N. Zulu" /></div>
+      <div class="field"><label for="naTime">Time</label><input class="input" id="naTime" placeholder="e.g. 02:30 PM" required /></div>
+      <button type="submit" class="btn btn-primary btn-block" style="margin-top:6px;">Book appointment</button>
+    </form>
+  </div>
+</div>
+  <script src="../js/data.js"></script>
+  <script src="../js/guard.js"></script>
+  <script src="../js/render-helpers.js"></script>
+  <script src="../js/modal.js"></script>
+  <script src="../js/pages/appointments.js"></script>
+
+  <div class="modal-overlay" id="editApptModal" style="display:none;" onclick="if(event.target===this) closeModal('editApptModal')">
+  <div class="modal-box">
+    <div class="modal-head"><h3 class="modal-title font-display">Edit appointment</h3><button class="modal-close" onclick="closeModal('editApptModal')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l18 18"/></svg></button></div>
+    <form id="editApptForm">
+      <input type="hidden" id="eaIndex" />
+      <div class="field"><label>Patient name</label><input class="input" id="eaPatient" required /></div>
+      <div class="field"><label>Department</label><select class="input" id="eaDept"></select></div>
+      <div class="field"><label>Doctor</label><input class="input" id="eaDoctor" required /></div>
+      <div class="field"><label>Time</label><input class="input" id="eaTime" required /></div>
+      <div class="field"><label>Status</label>
+        <select class="input" id="eaStatus">
+          <option>Pending</option><option>Confirmed</option><option>Checked In</option><option>Completed</option><option>Cancelled</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block" style="margin-top:6px;">Save changes</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>
