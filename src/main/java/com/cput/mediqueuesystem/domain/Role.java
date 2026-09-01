@@ -1,84 +1,65 @@
 package com.cput.mediqueuesystem.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-
-/*
- * Role.java
- * Role entity used to assign permissions and access levels to users.
- *
- * Author: Charmaine Dlamini
- * Date: 29 July 2026
- */
+import jakarta.persistence.*;
+import java.util.Set;
 
 @Entity
-@Table(name = "role")
+@Table(name = "roles")
 public class Role {
 
-    // Primary Key
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "role_id")
-    private String roleId;
+    private Long roleId;
 
-    // Role name (Patient, Doctor, Nurse, Receptionist, Admin)
     @Column(name = "role_name", nullable = false, unique = true)
     private String roleName;
 
-    // One role can belong to many users
-    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<User> users = new ArrayList<>();
+    @Column(name = "description")
+    private String description;
 
-    // Default constructor required by JPA
-    protected Role() {
+    @OneToMany(mappedBy = "role")
+    private Set<User> users;
+
+    public Role() {}
+
+    public Role(String roleName, String description) {
+        this.roleName = roleName;
+        this.description = description;
     }
 
-    // Constructor used by Builder
+    // Private constructor for Builder
     private Role(Builder builder) {
         this.roleId = builder.roleId;
         this.roleName = builder.roleName;
-        this.users = builder.users;
+        this.description = builder.description;
     }
 
-    // Getters
+    public Long getRoleId() { return roleId; }
+    public void setRoleId(Long roleId) { this.roleId = roleId; }
+    public String getRoleName() { return roleName; }
+    public void setRoleName(String roleName) { this.roleName = roleName; }
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+    public Set<User> getUsers() { return users; }
+    public void setUsers(Set<User> users) { this.users = users; }
 
-    public String getRoleId() {
-        return roleId;
-    }
-
-    public String getRoleName() {
-        return roleName;
-    }
-
-    public List<User> getUsers() {
-        return users;
-    }
-
-    // Returns the Role object as a String
     @Override
     public String toString() {
         return "Role{" +
-                "roleId='" + roleId + '\'' +
+                "roleId=" + roleId +
                 ", roleName='" + roleName + '\'' +
+                ", description='" + description + '\'' +
                 '}';
     }
 
-    /*
-     * Builder class for Role.
-     */
+    // ===== BUILDER PATTERN =====
     public static class Builder {
-
-        private String roleId;
+        private Long roleId;
         private String roleName;
-        private List<User> users = new ArrayList<>();
+        private String description;
 
-        public Builder setRoleId(String roleId) {
+        public Builder setRoleId(Long roleId) {
             this.roleId = roleId;
             return this;
         }
@@ -88,15 +69,8 @@ public class Role {
             return this;
         }
 
-        public Builder setUsers(List<User> users) {
-            this.users = users;
-            return this;
-        }
-
-        public Builder copy(Role role) {
-            this.roleId = role.roleId;
-            this.roleName = role.roleName;
-            this.users = role.users;
+        public Builder setDescription(String description) {
+            this.description = description;
             return this;
         }
 

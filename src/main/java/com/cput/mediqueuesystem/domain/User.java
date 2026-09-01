@@ -2,6 +2,9 @@ package com.cput.mediqueuesystem.domain;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -20,6 +23,15 @@ import jakarta.persistence.Table;
  * Date: 28 July 2026
  */
 
+@JsonTypeInfo(
+    use = JsonTypeInfo.Id.NAME,
+    include = JsonTypeInfo.As.PROPERTY,
+    property = "type"
+)
+@JsonSubTypes({
+    @JsonSubTypes.Type(value = Patient.class, name = "patient"),
+    @JsonSubTypes.Type(value = Staff.class, name = "staff")
+})
 @Entity
 @Table(name = "user")
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -81,7 +93,7 @@ public abstract class User {
     }
 
     // Getters
-  
+
     public String getUserId() {
         return userId;
     }
