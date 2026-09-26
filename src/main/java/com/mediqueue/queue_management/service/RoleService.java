@@ -3,7 +3,9 @@ package com.mediqueue.queue_management.service;
 import com.mediqueue.queue_management.model.Role;
 import com.mediqueue.queue_management.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 //try the interface / create it , should have 2 of these services
@@ -23,8 +25,10 @@ public class RoleService {
         return roleRepository.findById(id).orElse(null);
     }
 
-    // Create a new role
     public Role createRole(Role role) {
+        if (roleRepository.findAll().stream().anyMatch(r -> r.getRoleName().equalsIgnoreCase(role.getRoleName()))) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "A role with this name already exists");
+        }
         return roleRepository.save(role);
     }
 
