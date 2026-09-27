@@ -1,43 +1,40 @@
-# MediQueue — Plain HTML/CSS/JavaScript
+# MediQueue — Queue Management Subsystem
+Individual submission — Lithabile Lalela
 
-A 4-screen Queue Management subsystem for the MediQueue Clinic project.
-Built with vanilla HTML, CSS, and JavaScript — no frameworks, no build step.
+## What this is
+The Queue Management subsystem of MediQueue: manages daily clinic queues,
+patient entries into those queues, and the roles staff can be assigned.
+Built independently — self-contained, no dependency on other subsystems'
+entities (Patient, Staff, Visit are referenced by plain ID only, not joined).
 
-## How to use
+## Entities
+- **Queue** — one per clinic per day (clinicId, date, maxCapacity, status)
+- **QueueEntry** — one patient's spot in a queue (queueId, patientId, priorityLevel, status, checkInTime)
+- **Role** — system access levels (roleId, roleName)
 
-1. Unzip the folder into your project location.
-2. Open it in **VS Code** (`File → Open Folder`).
-3. Double-click `dashboard.html` (or `index.html`) to open it in your browser.
-   - For the best experience, install the **Live Server** extension in VS Code,
-     right-click `dashboard.html` and choose **Open with Live Server**.
+## Business rules enforced
+- A clinic can only have one active queue per day
+- A queue cannot accept new entries once it's at max capacity
+- A queue entry's status can only move forward: waiting → in_consult → completed
+- Role names must be unique
 
-## Files
+## How to run
+1. MySQL running locally, database `mediqueue` with `queue`, `queue_entry`, `role` tables
+2. Update `application.properties` with your local MySQL password
+3. Run `QueueManagementApplication.java` — starts on port 8080
+4. Frontend: open `dashboard.html` via Live Server
 
-| File | What it is |
-|---|---|
-| `index.html` / `dashboard.html` | Screen 1 — Today's queue + recent queues |
-| `queue-entries.html` | Screen 2 — Filterable patient list |
-| `add-entry.html` | Screen 3 — Add a patient to the queue |
-| `roles.html` | Screen 4 — Role management (CRUD) |
-| `style.css` | Shared stylesheet (design system, all components) |
-| `script.js` | Shared JavaScript (mock data + page logic) |
+## API endpoints
+- `GET/POST /api/queues`, `GET /api/queues/today/{clinicId}`, `PATCH /api/queues/{id}/close`, `PATCH /api/queues/{id}/reopen`
+- `GET/POST /api/queue-entries`, `GET /api/queue-entries/queue/{queueId}`, `PATCH /api/queue-entries/{id}/call-in`, `PATCH /api/queue-entries/{id}/complete`, `DELETE /api/queue-entries/{id}`
+- `GET/POST/PUT/DELETE /api/roles`
 
-## Notes
+## Known limitations (intentional simplifications)
+- `CLINIC_ID` is hardcoded to 1 on the frontend — real version would derive this from the logged-in staff member's clinic
+- `patientId`/`doctorId` are plain foreign keys, not linked objects — patient/staff names aren't displayed, since those subsystems are owned by teammates
+- No real authentication yet
 
-- All data is **mocked** inside `script.js`. To plug in a real database
-  later, replace the `entries`, `patients`, `roles` etc. arrays with
-  data fetched from your backend (PHP, Node, Supabase — your choice).
-- The design follows a clean government / public-sector style: navy
-  primary, IBM Plex font, accessible status badges (Waiting / In Consult
-  / Completed / Emergency).
-- Each page uses `<body data-page="...">` so the bottom of `script.js`
-  knows which page-init function to call.
-
-## Mapping back to the project brief
-
-- **HTML** → all `.html` files (real semantic tags: `<header>`, `<nav>`,
-  `<table>`, `<form>`, `<dialog>`, etc.)
-- **CSS** → `style.css` with CSS custom properties (variables) for theming
-- **JavaScript** → `script.js` (vanilla ES6, no jQuery, no frameworks)
-
-— Group IM2, MediQueue Clinic Management System
+## Sources of help
+AI-assisted learning tools (Claude) were used to explore concepts, debug errors,
+and work through architectural decisions — as a learning aid, not a replacement
+for understanding the material. [Same disclosure format as Term 2 submission.]

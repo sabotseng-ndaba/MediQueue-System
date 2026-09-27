@@ -67,7 +67,7 @@
       <div class="card-footer">
         <a class="btn" href="queue-entries.html">View Entries</a>
         <a class="btn btn-outline" href="add-entry.html">Add Entry</a>
-        <button class="btn btn-outline" onclick="showToast('Queue closed (mock)')">Close Queue</button>
+        <button class="btn btn-outline" id="close-queue-btn">Close Queue</button>
       </div>
     </section>
 
@@ -81,16 +81,16 @@
     </section>
 
     
-    <a href="#" class="cta-dashed" onclick="event.preventDefault(); showToast('Create new queue (mock)')">
-      <span>
-        <span class="title">Create new queue for tomorrow</span><br />
-        <span class="sub">Set max capacity and open entries</span>
-      </span>
-      <span style="color:var(--muted-fg);">›</span>
-    </a>
+   <a href="#" class="cta-dashed" id="create-queue-cta">
+  <span>
+    <span class="title">Create new queue for today</span><br />
+    <span class="sub">Set max capacity and open entries</span>
+  </span>
+  <span style="color:var(--muted-fg);">›</span>
+</a>
   </main>
   <footer class="app-footer">
-    <div class="container">MediQueue · Group IM2 · MediQueue Clinic Management System</div>
+    <div class="container">MediQueue Clinic Management System</div>
   </footer>
   <script src="script.js"></script>
 </body>

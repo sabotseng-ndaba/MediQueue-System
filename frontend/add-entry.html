@@ -38,35 +38,25 @@
 
     <form id="entry-form" class="card" novalidate>
       <div class="form-grid">
-        <!-- Patient search -->
+        <!-- Patient ID (real backend only stores a numeric reference, not a full patient record) -->
         <div class="field">
-          <label class="required">Patient</label>
-          <div id="patient-search-wrap" class="search-wrap">
-            <input id="patient-search" type="search" autocomplete="off" maxlength="60"
-                   placeholder="Search by patient ID or name..." />
-          </div>
-          <div id="patient-results" class="patient-results" style="display:none;"></div>
-
-          <div id="patient-selected" class="patient-selected" style="display:none;">
-            <div>
-              <p class="sel-name" style="font-weight:600;"></p>
-              <p class="sel-meta" style="font-family:var(--font-mono);font-size:11px;color:var(--muted-fg);margin-top:2px;"></p>
-            </div>
-            <button type="button" id="clear-patient" class="btn btn-ghost btn-sm" aria-label="Clear">✕</button>
-          </div>
-
-          <p id="patient-error" class="err">Please select a patient.</p>
+          <label class="required" for="patient-id-input">Patient ID</label>
+          <input id="patient-id-input" type="number" min="1" placeholder="e.g. 106" required />
+          <p style="font-size:12px;color:var(--muted-fg);margin-top:6px;">
+            Enter the patient's numeric ID. Full patient lookup by name isn't available here —
+            patient records are managed by a different subsystem.
+          </p>
+          <p id="patient-error" class="err">Please enter a valid patient ID.</p>
         </div>
 
-        
         <div class="stats">
           <div>
             <p class="stat-label">Queue Number</p>
-            <p class="stat-value-lg" id="auto-queue-num"></p>
+            <p class="stat-value-lg" id="auto-queue-num">Assigned on save</p>
           </div>
           <div>
             <p class="stat-label">Check-in Time</p>
-            <p class="stat-value-lg" id="auto-checkin"></p>
+            <p class="stat-value-lg" id="auto-checkin">Set on save</p>
           </div>
           <div>
             <p class="stat-label">Queue</p>
@@ -74,7 +64,6 @@
           </div>
         </div>
 
-        
         <div class="two-col">
           <div class="field">
             <label class="required" for="priority">Priority Level</label>
@@ -85,24 +74,23 @@
             <div style="margin-top:8px;" id="priority-preview"></div>
           </div>
           <div class="field">
-            <label class="required" for="status">Initial Status</label>
-            <select id="status">
-              <option value="waiting">Waiting</option>
-              <option value="in_consult">In Consult</option>
-            </select>
+            <label>Initial Status</label>
             <div style="margin-top:8px;" id="status-preview"></div>
+            <p style="font-size:12px;color:var(--muted-fg);margin-top:6px;">
+              Every new entry starts as Waiting — this is set automatically by the system.
+            </p>
           </div>
         </div>
       </div>
 
       <div class="card-footer" style="justify-content:flex-end;">
         <a href="dashboard.html" class="btn btn-outline">Cancel</a>
-        <button type="submit" class="btn">Save Entry</button>
+        <button type="submit" class="btn" id="save-entry-btn">Save Entry</button>
       </div>
     </form>
   </main>
   <footer class="app-footer">
-    <div class="container">MediQueue · Group IM2 · MediQueue Clinic Management System</div>
+    <div class="container">MediQueue Clinic Management System</div>
   </footer>
   <script src="script.js"></script>
 </body>

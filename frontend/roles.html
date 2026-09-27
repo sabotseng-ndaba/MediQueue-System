@@ -34,7 +34,7 @@
     <div class="page-head page-head-row">
       <div>
         <h1>Roles</h1>
-        <p>System access levels assigned to staff users.</p>
+        <p>System access levels available in MediQueue.</p>
       </div>
       <button class="btn" id="create-role-btn">+ Create New Role</button>
     </div>
@@ -46,7 +46,6 @@
             <tr>
               <th>ID</th>
               <th>Role Name</th>
-              <th>Users</th>
               <th class="text-right">Actions</th>
             </tr>
           </thead>
@@ -56,7 +55,8 @@
     </section>
 
     <p style="font-size:12px;color:var(--muted-fg);margin-top:12px;">
-      Roles control what staff can see and do in MediQueue. Deleting a role does not delete the users assigned to it.
+      Roles control what staff can see and do in MediQueue. Which staff members hold each role
+      is managed by a different subsystem, so that list isn't shown here.
     </p>
   </main>
 
@@ -66,29 +66,23 @@
       <h3 id="dlg-title"></h3>
       <p id="dlg-desc" class="desc"></p>
 
-      <!-- Create / Edit form -->
       <div id="dlg-form" style="display:none;" class="field">
         <label for="dlg-input">Role name</label>
         <input id="dlg-input" maxlength="40" placeholder="e.g. Pharmacist" />
         <p id="dlg-error" class="err"></p>
       </div>
 
-      <!-- View users list -->
-      <div id="dlg-users" style="display:none;"></div>
-
-      <!-- Delete message (hidden body, just the desc above is shown) -->
       <div id="dlg-delete-msg" style="display:none;"></div>
 
       <div class="dialog-actions">
         <button id="dlg-cancel" class="btn btn-outline">Cancel</button>
-        <button id="dlg-close" class="btn" style="display:none;">Close</button>
         <button id="dlg-save" class="btn" style="display:none;">Save</button>
         <button id="dlg-delete" class="btn btn-danger" style="display:none;">Delete role</button>
       </div>
     </div>
   </div>
   <footer class="app-footer">
-    <div class="container">MediQueue · Group IM2 · MediQueue Clinic Management System</div>
+    <div class="container">MediQueue Clinic Management System</div>
   </footer>
   <script src="script.js"></script>
 </body>
